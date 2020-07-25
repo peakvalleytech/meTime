@@ -1,5 +1,6 @@
 package peakvalleytech.neverdown.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -7,13 +8,13 @@ import androidx.room.Query
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 
 @Dao
-interface GratitudeItemDao {
+interface GratitudeDao {
     /**
      * Select all items from table
      * @return all items
      */
     @Query("select * from gratitude")
-    suspend fun getAllItems() : List<GratitudeItem>
+    suspend  fun getAllItems() : List<GratitudeItem>
 
     /**
      * Insert items in the database

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class GratitudeItemDaoTest {
+class GratitudeDaoTest {
     //    private lateinit var mDatabase: NeverDownDatabase
     @Before
     fun init() {

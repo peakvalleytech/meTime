@@ -6,13 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activities.activitylist.ActivitiesListFragment">
+    tools:context=".ui.activitylist.ActivitiesListFragment">
 
     <Button
         android:id="@+id/gratitudeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Gratitude" />
+
+    <Button
+        android:id="@+id/meditationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meditation" />
 
     <!--    <androidx.cardview.widget.CardView-->
 <!--        android:layout_width="match_parent"-->

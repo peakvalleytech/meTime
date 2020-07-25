@@ -39,13 +39,11 @@ object ServiceLocator {
         .addCallback(object : RoomDatabase.Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
-//                (gratitudeRepository as DefaultGratitudeRepository).mIsLoading.value = false
             }
 
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
                 suspend {
-                    (gratitudeRepository as DefaultGratitudeRepository).mIsLoading.value = true
                     val neverDownDatabase = db as Database
                     val gratitudeItemDao = neverDownDatabase.gratitudeItemDao()
                     val itemNames = listOf("Place to sleep", "Food", "A job", "Water", "Clothes", "Computer")
@@ -56,7 +54,6 @@ object ServiceLocator {
                         items.add(item)
                     }
                     gratitudeItemDao.insertItems(items)
-                    (gratitudeRepository as DefaultGratitudeRepository).mIsLoading.value = false
                 }
             }
         }).build()

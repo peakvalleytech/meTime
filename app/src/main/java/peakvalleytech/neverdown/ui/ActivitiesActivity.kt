@@ -1,11 +1,10 @@
-package peakvalleytech.neverdown.ui.activities
+package peakvalleytech.neverdown.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import peakvalleytech.neverdown.R
-import androidx.databinding.DataBindingUtil
 import peakvalleytech.neverdown.databinding.ActivitiesActivityBinding
-import peakvalleytech.neverdown.ui.activities.activitylist.ActivitiesListFragment
+import peakvalleytech.neverdown.ui.activitylist.ActivitiesListFragment
 
 class ActivitiesActivity : AppCompatActivity() {
     lateinit var  binding: ActivitiesActivityBinding

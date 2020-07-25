@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.ui.activities
+package peakvalleytech.neverdown.ui
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.ui.activities.intro
+package peakvalleytech.neverdown.ui.intro
 
 import android.os.Bundle
 import android.view.LayoutInflater

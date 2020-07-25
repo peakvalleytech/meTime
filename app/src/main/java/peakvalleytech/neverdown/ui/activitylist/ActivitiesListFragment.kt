@@ -1,6 +1,5 @@
-package peakvalleytech.neverdown.ui.activities.activitylist
+package peakvalleytech.neverdown.ui.activitylist
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import peakvalleytech.neverdown.R
-import peakvalleytech.neverdown.ui.activities.ActivitiesViewModel
+import peakvalleytech.neverdown.ui.ActivitiesViewModel
 import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeFragment
 
 class ActivitiesListFragment : Fragment() {

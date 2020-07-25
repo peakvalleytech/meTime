@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+<variable name="gratitudeViewModel" type="peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel"/>
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/inHaleText"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Breath in."
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/breathCounterText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/breathCounterText"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="1"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/exHaleText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inHaleText" />
+
+        <TextView
+            android:id="@+id/exHaleText"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Breath out."
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/breathCounterText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

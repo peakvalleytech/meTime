@@ -1,8 +1,9 @@
 package peakvalleytech.neverdown.ui.activity.gratitude
 
-import androidx.lifecycle.*
-import kotlinx.coroutines.launch
-import peakvalleytech.neverdown.data.repo.DefaultGratitudeRepository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import peakvalleytech.neverdown.data.repo.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import kotlin.random.Random
@@ -13,8 +14,8 @@ class GratitudeViewModel(
     /**
      * The gratitude items that the app selects from
      */
-    private lateinit var _mItems: List<GratitudeItem>
-    lateinit var mItems: List<GratitudeItem>
+    private var _mItems = gratitudeRepository.getItems()
+    val mItems: LiveData<List<GratitudeItem>> = _mItems
 
     /**
      * Indciates whether the user is grateful for the currently shown item
@@ -35,22 +36,21 @@ class GratitudeViewModel(
     private var seenItems : MutableList<GratitudeItem> = mutableListOf()
 
     fun loadInitialItem() {
-        viewModelScope.launch {
-            _mItems = gratitudeRepository.getItems()
-            mItems = _mItems
-            _mItem.value = mItems.get(0)
-            println("items : " + mItems)
-        }
+//        viewModelScope.launch {
+//            _mItems = gratitudeRepository.getItems()
+//            mItems = _mItems
+//            _mItem.value = mItems.get(0)
+//            println("items : " + mItems)
+//        }
     }
 
-    val isLoading = (gratitudeRepository as DefaultGratitudeRepository).mIsLoading
     /**
      * Select a new item from the items list and set it to current item
      */
     fun updateCurrentItem() {
-        val items = mItems
-        var index = rand(0, items?.size)
-        _mItem.value = mItems.get(index)
+        val items = mItems.value
+        var index = rand(0, items?.size as Int)
+        _mItem.value = items.get(index)
     }
     fun isGrateful(boolean: Boolean) {
         _mIsGrateful.value = boolean
@@ -60,6 +60,12 @@ class GratitudeViewModel(
 
     fun rand(from: Int, to: Int) : Int {
         return random.nextInt(to - from) + from
+    }
+
+    fun loadItems() {
+//        TODO("Not yet implemented")'
+
+
     }
 }
 
