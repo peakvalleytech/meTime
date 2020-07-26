@@ -39,6 +39,5 @@ class DefaultGratitudeRepository(
             items.add(item)
         }
             gratitudeDataSource.insertItems(items)
-
     }
 }

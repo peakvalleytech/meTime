@@ -1,18 +1,44 @@
 package peakvalleytech.neverdown.ui.activity.meditation
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MeditationViewModel : ViewModel() {
 
     /**
-     * The counter for breating during the meditation
+     * The counter for the breathing during the meditation
      */
-    var mBreathCounter = 1
+    private val _mBreathCounter = MutableLiveData<Int>()
+    var mBreathCounter = _mBreathCounter
 
     /**
-     * Keep track of whether we are in the inhale or exahle state
+     * Keep track of whether we are in the inhale or exhale state
      */
-    var mState = 1
+    var _mBreathState = MutableLiveData<Int>()
+    var mBreathState = _mBreathState
+
+    /**
+     * Set the counter
+     */
+    fun setCounter() {
+
+    }
+
+    /**
+     * Increment the counter
+     */
+    fun incrementCounter() {
+
+    }
+
+    /**
+     * Restart the counter
+     */
+    fun restartCounter() {
+
+    }
+
+
 
     private val INHALE_STATE = 1
     private val EXHALE_STATE = 2

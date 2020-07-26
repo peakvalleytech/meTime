@@ -7,13 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.runBlocking
 import peakvalleytech.neverdown.data.local.LocalGratitudeDataSource
-import peakvalleytech.neverdown.data.local.Database
+import peakvalleytech.neverdown.data.local.NeverDownDatabase
 import peakvalleytech.neverdown.data.repo.DefaultGratitudeRepository
 import peakvalleytech.neverdown.data.repo.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 
 object ServiceLocator {
-    private var database : Database? = null
+    private var neverDownDatabase : NeverDownDatabase? = null
     @Volatile
     var gratitudeRepository: GratitudeRepository? = null
 
@@ -26,15 +26,15 @@ object ServiceLocator {
     }
 
     private fun createGratitudeRepository(context: Context): GratitudeRepository {
-        var ndb  = database ?: createDatabase(context)
+        var ndb  = neverDownDatabase ?: createDatabase(context)
         var localGratitudeDataSource = LocalGratitudeDataSource(ndb.gratitudeItemDao())
         return DefaultGratitudeRepository(localGratitudeDataSource)
     }
 
-    private fun createDatabase(context: Context): Database {
+    private fun createDatabase(context: Context): NeverDownDatabase {
         val result = Room.databaseBuilder(
             context.applicationContext,
-            Database::class.java,
+            NeverDownDatabase::class.java,
             "Neverdown.db")
         .addCallback(object : RoomDatabase.Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
@@ -44,7 +44,7 @@ object ServiceLocator {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
                 suspend {
-                    val neverDownDatabase = db as Database
+                    val neverDownDatabase = db as NeverDownDatabase
                     val gratitudeItemDao = neverDownDatabase.gratitudeItemDao()
                     val itemNames = listOf("Place to sleep", "Food", "A job", "Water", "Clothes", "Computer")
                     val items: MutableList<GratitudeItem> = mutableListOf()
@@ -58,7 +58,7 @@ object ServiceLocator {
             }
         }).build()
 
-        database = result
+        neverDownDatabase = result
         return result
     }
 
