@@ -1,14 +1,21 @@
 package peakvalleytech.neverdown.data.repo
 
+import android.content.Context
+import android.content.res.AssetManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
+import java.io.IOException
+import java.io.InputStream
+import java.util.*
 
 class DefaultGratitudeRepository(
-    private val gratitudeDataSource: GratitudeDataSource
+    private val gratitudeDataSource: GratitudeDataSource,
+    private val context: Context
 ) : GratitudeRepository {
     override  fun getItems(): LiveData<List<GratitudeItem>> {
         val data = MutableLiveData<List<GratitudeItem>>()
@@ -18,26 +25,36 @@ class DefaultGratitudeRepository(
             if (items?.size == 0) {
                 runBlocking {
                     loadData()
-                    println("after data")
-                    items = gratitudeDataSource.getAllItems();
                 }
+                joinAll()
+                    items = gratitudeDataSource.getAllItems();
 
-                println("after items: ${items}")
+                     println("items: ${items}")
                 println("after mld")
             }
-        }
+            print("end of rb")
+        print("Setting mld")
         data.value = items
+        }
         return data
     }
 
     private suspend fun loadData() {
-        val itemNames = listOf("Place to sleep", "Food", "A job", "Water", "Clothes", "Computer")
-        val items: MutableList<GratitudeItem> = mutableListOf()
-        var id = 1
-        for (itemName in itemNames) {
-            val item = GratitudeItem(id++, itemName)
-            items.add(item)
-        }
+        try {
+            println("Start loadData")
+            val items: MutableList<GratitudeItem> = mutableListOf()
+            var id = 1
+            val inputStream = context.resources.assets.open("gratitudeList.txt")
+            val scanner : Scanner = Scanner(inputStream)
+            while(scanner.hasNextLine()) {
+                val item = scanner.nextLine()
+                items.add(GratitudeItem(id++, item))
+            }
             gratitudeDataSource.insertItems(items)
+            println("End loadData")
+        } catch(e: IOException) {
+            e.printStackTrace()
+        }
+
     }
 }

@@ -28,7 +28,7 @@ object ServiceLocator {
     private fun createGratitudeRepository(context: Context): GratitudeRepository {
         var ndb  = neverDownDatabase ?: createDatabase(context)
         var localGratitudeDataSource = LocalGratitudeDataSource(ndb.gratitudeItemDao())
-        return DefaultGratitudeRepository(localGratitudeDataSource)
+        return DefaultGratitudeRepository(localGratitudeDataSource, context)
     }
 
     private fun createDatabase(context: Context): NeverDownDatabase {

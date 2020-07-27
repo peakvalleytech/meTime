@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 <data>
-<variable name="gratitudeViewModel" type="peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel"/>
+<variable name="meditationViewModel" type="peakvalleytech.neverdown.ui.activity.meditation.MeditationViewModel"/>
+    <variable
+        name="showInhaleText"
+        type="int" />
+    <variable
+        name="showExhaleText"
+        type="int" />
 </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,6 +22,7 @@
             android:layout_height="0dp"
             android:text="Breath in."
             android:textSize="30sp"
+            android:visibility="@{showInhaleText}"
             app:layout_constraintBottom_toTopOf="@id/breathCounterText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +32,9 @@
             android:id="@+id/breathCounterText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="1"
+            android:text="@{String.valueOf(meditationViewModel.mBreathCounter)}"
             android:textSize="30sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@id/exHaleText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +46,7 @@
             android:layout_height="0dp"
             android:text="Breath out."
             android:textSize="30sp"
+            android:visibility="@{showExhaleText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
