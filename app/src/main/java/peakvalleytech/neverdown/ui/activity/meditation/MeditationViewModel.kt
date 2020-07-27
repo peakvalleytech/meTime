@@ -40,6 +40,6 @@ class MeditationViewModel : ViewModel() {
 
 
 
-    private val INHALE_STATE = 1
-    private val EXHALE_STATE = 2
+    val INHALE_STATE = 1
+    val EXHALE_STATE = 2
 }
