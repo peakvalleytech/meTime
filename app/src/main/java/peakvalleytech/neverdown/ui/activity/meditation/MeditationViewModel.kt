@@ -1,7 +1,12 @@
 package peakvalleytech.neverdown.ui.activity.meditation
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import peakvalleytech.neverdown.data.repo.GratitudeRepository
+import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel
 
 class MeditationViewModel : ViewModel() {
 
@@ -9,18 +14,20 @@ class MeditationViewModel : ViewModel() {
      * The counter for the breathing during the meditation
      */
     private val _mBreathCounter = MutableLiveData<Int>()
-    var mBreathCounter = _mBreathCounter
+    val mBreathCounter: LiveData<Int> = _mBreathCounter
 
     /**
      * Keep track of whether we are in the inhale or exhale state
      */
-    var _mBreathState = MutableLiveData<Int>()
+    private val _mBreathState = MutableLiveData<Int>()
     var mBreathState = _mBreathState
 
     /**
-     * Set the counter
+     * Start the counter
      */
-    fun setCounter() {
+    fun startCounter() {
+        _mBreathCounter.value = 1
+        _mBreathState.value = INHALE_STATE
 
     }
 
@@ -28,18 +35,31 @@ class MeditationViewModel : ViewModel() {
      * Increment the counter
      */
     fun incrementCounter() {
-
+        viewModelScope.launch{
+                println("incrementing counter")
+                delay(1100)
+                var counter = _mBreathCounter.value
+                if (counter != null) {
+                    if (counter == 4) {
+                        counter = 1
+                        var nextState =
+                            if (_mBreathState.value == INHALE_STATE) EXHALE_STATE else INHALE_STATE
+                        _mBreathState.value = nextState
+                    } else {
+                        ++counter
+                    }
+                    _mBreathCounter.value = counter
+                }
+        }
     }
-
-    /**
-     * Restart the counter
-     */
-    fun restartCounter() {
-
-    }
-
-
 
     val INHALE_STATE = 1
     val EXHALE_STATE = 2
+}
+
+@Suppress("UNCHECKED_CAST")
+class MediationViewModelFactory (
+): ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>) =
+        (MeditationViewModel() as T)
 }
