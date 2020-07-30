@@ -30,4 +30,5 @@ interface QuoteDao {
      */
     @Query("delete from quotes")
     suspend fun deleteAllQuotes()
+    abstract fun insertQuotes(quotes: List<Quote>)
 }

@@ -8,5 +8,5 @@ interface QuotesRepository {
      * Get all items in repository
      * @return the list of all items
      */
-    fun getItems(): LiveData<List<Quote>>
+    fun getQuotes(): LiveData<List<Quote>>
 }

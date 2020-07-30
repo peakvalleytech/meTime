@@ -15,17 +15,11 @@ class QuotesViewModel(
     /**
      * The gratitude items that the app selects from
      */
-    private var _mItems = quotesRepository.getItems()
+    private var _mItems = quotesRepository.getQuotes()
     val mItems: LiveData<List<Quote>> = _mItems
 
     /**
-     * Indciates whether the user is grateful for the currently shown item
-     */
-    private val _mIsGrateful = MutableLiveData<Boolean>()
-    val mIsGrateful = _mIsGrateful
-
-    /**
-     * The currently displayed item
+     * The currently displayed quote
      */
     private val _mQuote = MutableLiveData<Quote>()
     val mItem : LiveData<Quote> = _mQuote
@@ -34,39 +28,21 @@ class QuotesViewModel(
      * Keep track of which items have already been shown to avoid showing the same item
      * twice per session
      */
-    private var seenItems : MutableList<GratitudeItem> = mutableListOf()
-
-    fun loadInitialItem() {
-//        viewModelScope.launch {
-//            _mItems = quotesRepository.getItems()
-//            mItems = _mItems
-//            _mItem.value = mItems.get(0)
-//            println("items : " + mItems)
-//        }
-    }
+    private var seenQuotes : MutableList<Quote> = mutableListOf()
 
     /**
      * Select a new item from the items list and set it to current item
      */
-    fun updateCurrentItem() {
+    fun updateCurrentQuote() {
         val items = mItems.value
         var index = rand(0, items?.size as Int)
         _mQuote.value = items.get(index)
-    }
-    fun isGrateful(boolean: Boolean) {
-        _mIsGrateful.value = boolean
     }
 
     private val random = Random
 
     fun rand(from: Int, to: Int) : Int {
         return random.nextInt(to - from) + from
-    }
-
-    fun loadItems() {
-//        TODO("Not yet implemented")'
-
-
     }
 }
 

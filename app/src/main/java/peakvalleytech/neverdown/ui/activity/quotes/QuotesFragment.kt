@@ -31,7 +31,7 @@ class QuotesFragment : Fragment() {
         binding.quotesViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.mItems.observe(viewLifecycleOwner, Observer {
-            viewModel.updateCurrentItem()
+            viewModel.updateCurrentQuote()
         })
 
         return binding.root
