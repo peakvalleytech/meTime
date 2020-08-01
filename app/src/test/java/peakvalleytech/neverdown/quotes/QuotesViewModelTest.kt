@@ -25,7 +25,11 @@ class QuotesViewModelTest {
     @Before
     fun setUp() {
         quotesRepository = FakeQuotesRepository()
-//        quotesRepository.addItems("Place to sleep", "Food", "Water", "Clothes", "Computer")
+        val quote1 = Quote(1, "Quote 1", "Author 1")
+        val quote2 = Quote(2, "Quote 2", "Author 2")
+        val quote3 = Quote(3, "Quote 3", "Author 3")
+
+        quotesRepository.addQuotes(quote1, quote2, quote3)
         quotesViewModel = QuotesViewModel(quotesRepository)
     }
 
@@ -38,8 +42,8 @@ class QuotesViewModelTest {
         val observer = Observer<List<Quote>> {}
         try {
             quotesViewModel.mItems.observeForever(observer)
-            val items = quotesViewModel.mItems.value
-            assertThat(items?.size , `is`(5))
+            val quotes = quotesViewModel.mItems.value
+            assertThat(quotes?.size , `is`(3))
         } finally {
             quotesViewModel.mItems.removeObserver(observer)
         }
@@ -50,36 +54,10 @@ class QuotesViewModelTest {
         val observer = Observer<List<Quote>> {}
         try {
             quotesViewModel.mItems.observeForever(observer)
-            val items = quotesViewModel.mItems.value
-            assertThat(items?.size , not(`is`(3)))
+            val quotes = quotesViewModel.mItems.value
+            assertThat(quotes?.size , not(`is`(1)))
         } finally {
             quotesViewModel.mItems.removeObserver(observer)
         }
-    }
-
-    /**
-     * Call isGrateful with true
-     * Should: set observable  to true
-     */
-    @Test
-    fun setIsGrateful_toTrue() {
-
-    }
-    /**
-     * Call isGrateful with false
-     * Should: set observable  to false
-     */
-
-    @Test
-    fun setIsGrateful_toFalse() {
-
-    }
-
-    /**
-     * Calling updateCurrentItem should set item observable to new item
-     */
-    @Test
-    fun updateCurrentItem_Should_setObservable() {
-
     }
 }

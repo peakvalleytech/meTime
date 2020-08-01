@@ -5,8 +5,13 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import peakvalleytech.neverdown.data.repo.GratitudeRepository
 
+/**
+ * A ViewModel used to provide pondering feature for an activity
+ * It can keep track of how long user should wait before allow to continue to next item.
+ * the the view
+ */
 @ExperimentalCoroutinesApi
-class BaseActivityViewModel /*@ViewModelInject constructor(private val gratitudeRepository : GratitudeRepository)*/
+abstract class PonderViewModel /*@ViewModelInject constructor(private val gratitudeRepository : GratitudeRepository)*/
     : ViewModel() {
     // TODO: Implement the ViewModel
 
@@ -17,13 +22,16 @@ class BaseActivityViewModel /*@ViewModelInject constructor(private val gratitude
      * This is a feature of all activities to force user to ponder over items rather than
      * quickly passing over
      */
-    val _mCanGetNext : MutableLiveData<Boolean> = MutableLiveData()
-    val mCanGetNext = _mCanGetNext
+    val _mPonderDone : MutableLiveData<Boolean> = MutableLiveData()
+    val mPonderDone = _mPonderDone
 
-
-    protected fun testNextCondition(test : () -> Boolean) {
+    protected fun testPonderState(test : () -> Boolean) {
         if(test()) {
-            _mCanGetNext.value = true
+            _mPonderDone.value = true
         }
+    }
+
+    fun resetPonderState() {
+        _mPonderDone.value = false
     }
 }

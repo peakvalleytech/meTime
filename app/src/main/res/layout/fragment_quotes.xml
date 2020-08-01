@@ -20,8 +20,8 @@
             android:id="@+id/quoteText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Are you grateful for ..."
-            android:textSize="30sp"
+            android:text="@{quotesViewModel.MQuote.quote}"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="-author"
-            android:textSize="30sp"
+            android:text="@{quotesViewModel.MQuote.author}"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/quoteText" />
@@ -42,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Next"
+            android:onClick="@{() -> quotesViewModel.updateCurrentQuote()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

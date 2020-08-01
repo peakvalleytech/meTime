@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,15 +25,23 @@ class QuotesFragment : Fragment() {
     ): View {
         val binding = inflate<FragmentQuotesBinding>(
             inflater,
-            R.layout.fragment_gratitude,
+            R.layout.fragment_quotes,
             container,
             false
         )
         binding.quotesViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.mItems.observe(viewLifecycleOwner, Observer {
+        viewModel.mQuotes.observe(viewLifecycleOwner, Observer {
             viewModel.updateCurrentQuote()
+            viewModel.startPondering()
         })
+//        viewModel.mPonderDone.observe(viewLifecycleOwner, Observer<Boolean> {
+//            if(it) {
+//                binding.nextButton.isEnabled = true
+//            } else {
+//                binding.nextButton.isEnabled = false
+//            }
+//        })
 
         return binding.root
     }

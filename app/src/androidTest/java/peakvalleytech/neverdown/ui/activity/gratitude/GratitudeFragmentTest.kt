@@ -17,14 +17,19 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import peakvalleytech.neverdown.R
+import peakvalleytech.neverdown.ServiceLocator
+import peakvalleytech.neverdown.data.repo.GratitudeRepository
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)
 class GratitudeFragmentTest {
+
+    private lateinit var repository: GratitudeRepository
+
     @Before
     fun initRepository() {
-//        repository = FakeAdnroidTestRepository()
-//        ServiceLocator.gratitudeRepository = repository
+        repository = FakeAndroidTestGratitudeRepository()
+        ServiceLocator.gratitudeRepository = repository
     }
 
 //    @After

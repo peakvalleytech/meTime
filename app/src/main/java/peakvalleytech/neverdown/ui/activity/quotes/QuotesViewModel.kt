@@ -7,22 +7,23 @@ import androidx.lifecycle.ViewModelProvider
 import peakvalleytech.neverdown.data.repo.QuotesRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.model.quotes.Quote
+import peakvalleytech.neverdown.ui.base.PonderViewModel
 import kotlin.random.Random
 
 class QuotesViewModel(
     private val quotesRepository : QuotesRepository
-) : ViewModel() {
+) : PonderViewModel() {
     /**
      * The gratitude items that the app selects from
      */
-    private var _mItems = quotesRepository.getQuotes()
-    val mItems: LiveData<List<Quote>> = _mItems
+    private var _mQuotes = quotesRepository.getQuotes()
+    val mQuotes: LiveData<List<Quote>> = _mQuotes
 
     /**
      * The currently displayed quote
      */
     private val _mQuote = MutableLiveData<Quote>()
-    val mItem : LiveData<Quote> = _mQuote
+    val mQuote : LiveData<Quote> = _mQuote
 
     /**
      * Keep track of which items have already been shown to avoid showing the same item
@@ -34,15 +35,20 @@ class QuotesViewModel(
      * Select a new item from the items list and set it to current item
      */
     fun updateCurrentQuote() {
-        val items = mItems.value
-        var index = rand(0, items?.size as Int)
-        _mQuote.value = items.get(index)
+        val quotes = mQuotes.value
+        var index = rand(0, quotes?.size as Int)
+        _mQuote.value = quotes.get(index)
     }
 
     private val random = Random
 
     fun rand(from: Int, to: Int) : Int {
         return random.nextInt(to - from) + from
+    }
+
+    fun startPondering() {
+        resetPonderState()
+        testPonderState {true}
     }
 }
 

@@ -22,7 +22,7 @@ interface QuoteDao {
      * @param items the items to be inserted
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertQuote(quotes : List<Quote>)
+    suspend fun insertQuotes(quotes : List<Quote>)
 
     /**
      * Delete all items in the database
@@ -30,5 +30,4 @@ interface QuoteDao {
      */
     @Query("delete from quotes")
     suspend fun deleteAllQuotes()
-    abstract fun insertQuotes(quotes: List<Quote>)
 }

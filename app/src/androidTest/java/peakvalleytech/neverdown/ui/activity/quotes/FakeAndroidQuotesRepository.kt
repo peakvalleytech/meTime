@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.data.source
+package peakvalleytech.neverdown.ui.activity.quotes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import peakvalleytech.neverdown.data.repo.QuotesRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.model.quotes.Quote
 
-class FakeQuotesRepository : QuotesRepository {
+class FakeAndroidQuotesRepository : QuotesRepository {
     private var itemsServiceData: MutableList<Quote> = mutableListOf()
     override fun getQuotes(): LiveData<List<Quote>> {
         return MutableLiveData<List<Quote>>(itemsServiceData.toList())

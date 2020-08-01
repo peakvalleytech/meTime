@@ -11,6 +11,7 @@ import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.ui.ActivitiesViewModel
 import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeFragment
 import peakvalleytech.neverdown.ui.activity.meditation.MeditationFragment
+import peakvalleytech.neverdown.ui.activity.quotes.QuotesFragment
 
 class ActivitiesListFragment : Fragment() {
 
@@ -26,6 +27,7 @@ class ActivitiesListFragment : Fragment() {
         return inflater.inflate(R.layout.activities_fragment, container, false).also {
             val gratitudeButton = it.findViewById<Button>(R.id.gratitudeButton)
             val meditationButton = it.findViewById<Button>(R.id.meditationButton)
+            val quotesButton = it.findViewById<Button>(R.id.quotesButton)
             gratitudeButton.setOnClickListener { v ->
                 val fgm =  it@parentFragmentManager
                 val fragment = GratitudeFragment()
@@ -42,6 +44,15 @@ class ActivitiesListFragment : Fragment() {
                 fragTrans.replace(R.id.container, fragment)
                 fragTrans.commit()
             }
+            quotesButton.setOnClickListener { v ->
+                val fgm = it@parentFragmentManager
+                val fragment = QuotesFragment()
+                val fragTrans = fgm.beginTransaction()
+                fragTrans.addToBackStack(null)
+                fragTrans.replace(R.id.container, fragment)
+                fragTrans.commit()
+            }
+
 
         }
     }
