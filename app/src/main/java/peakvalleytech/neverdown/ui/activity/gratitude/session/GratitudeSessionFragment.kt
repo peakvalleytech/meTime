@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.ui.activity.gratitude
+package peakvalleytech.neverdown.ui.activity.gratitude.session
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,10 @@ import androidx.lifecycle.Observer
 import peakvalleytech.neverdown.NeverDownApplication
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
+import peakvalleytech.neverdown.databinding.FragmentGratitudeSessionBinding
 
-class GratitudeFragment : Fragment() {
-    private val viewModel by viewModels<GratitudeViewModel> {
+class GratitudeSessionFragment : Fragment() {
+    private val viewModel by viewModels<GratitudeSessionViewModel> {
         GratitudeViewModelFactory((requireContext().applicationContext as NeverDownApplication).gratitudeRepository)
     }
 
@@ -21,20 +22,16 @@ class GratitudeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = inflate<FragmentGratitudeBinding>(
+        val binding = inflate<FragmentGratitudeSessionBinding>(
             inflater,
-            R.layout.fragment_gratitude,
+            R.layout.fragment_gratitude_session,
             container,
             false
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
-        viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
-            val transaction = parentFragmentManager.beginTransaction()
-//            transaction.addToBackStack(null)
-            transaction.replace(R.id.fragment_host, it.newInstance())
-            transaction.commit()
+        viewModel.mItems.observe(viewLifecycleOwner, Observer {
+            viewModel.updateCurrentItem()
         })
 
         return binding.root

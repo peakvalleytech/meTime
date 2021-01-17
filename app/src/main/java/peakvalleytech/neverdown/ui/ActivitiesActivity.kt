@@ -14,7 +14,7 @@ class ActivitiesActivity : AppCompatActivity() {
 //        binding = DataBindingUtil.setContentView(this, R.layout.activities_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, ActivitiesListFragment.newInstance())
+                    .replace(R.id.fragment_host, ActivitiesListFragment.newInstance())
                     .commitNow()
         }
     }

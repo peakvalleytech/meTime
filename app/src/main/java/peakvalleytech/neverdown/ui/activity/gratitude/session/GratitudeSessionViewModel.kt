@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.ui.activity.pictures
+package peakvalleytech.neverdown.ui.activity.gratitude.session
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import kotlin.random.Random
 
-class PicturesViewModel(
+class GratitudeSessionViewModel(
     private val gratitudeRepository : GratitudeRepository
 ) : ViewModel() {
     /**
@@ -70,9 +70,9 @@ class PicturesViewModel(
 }
 
 @Suppress("UNCHECKED_CAST")
-class PicturesViewModelFactory (
+class GratitudeViewModelFactory (
     private val gratitudeRepository: GratitudeRepository
 ): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        (PicturesViewModel(gratitudeRepository) as T)
+        (GratitudeSessionViewModel(gratitudeRepository) as T)
 }

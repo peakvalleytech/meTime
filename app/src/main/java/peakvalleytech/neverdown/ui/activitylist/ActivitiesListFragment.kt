@@ -33,7 +33,7 @@ class ActivitiesListFragment : Fragment() {
                 val fragment = GratitudeFragment()
                 val fragTrans = fgm.beginTransaction()
                 fragTrans.addToBackStack(null)
-                fragTrans.replace(R.id.container, fragment)
+                fragTrans.replace(R.id.fragment_host, fragment)
                 fragTrans.commit()
             }
             meditationButton.setOnClickListener { v ->

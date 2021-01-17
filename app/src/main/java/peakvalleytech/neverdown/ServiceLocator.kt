@@ -3,17 +3,14 @@ package peakvalleytech.neverdown
 import android.content.Context
 import androidx.annotation.VisibleForTesting
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.runBlocking
 import peakvalleytech.neverdown.data.local.LocalGratitudeDataSource
 import peakvalleytech.neverdown.data.local.LocalQuotesDataSource
 import peakvalleytech.neverdown.data.local.NeverDownDatabase
-import peakvalleytech.neverdown.data.repo.DefaultGratitudeRepository
+import peakvalleytech.neverdown.data.repo.gratitude.DefaultGratitudeRepository
 import peakvalleytech.neverdown.data.repo.DefaultQuotesRepository
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
+import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.data.repo.QuotesRepository
-import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 
 object ServiceLocator {
     private var neverDownDatabase : NeverDownDatabase? = null
@@ -32,7 +29,10 @@ object ServiceLocator {
     private fun createGratitudeRepository(context: Context): GratitudeRepository {
         var ndb  = neverDownDatabase ?: createDatabase(context)
         var localGratitudeDataSource = LocalGratitudeDataSource(ndb.gratitudeItemDao())
-        return DefaultGratitudeRepository(localGratitudeDataSource, context)
+        return DefaultGratitudeRepository(
+            localGratitudeDataSource,
+            context
+        )
     }
 
     private fun createQuotesRepository(context: Context): QuotesRepository {

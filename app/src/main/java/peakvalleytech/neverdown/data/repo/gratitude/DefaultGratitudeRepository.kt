@@ -1,16 +1,12 @@
-package peakvalleytech.neverdown.data.repo
+package peakvalleytech.neverdown.data.repo.gratitude
 
 import android.content.Context
-import android.content.res.AssetManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.joinAll
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import java.io.IOException
-import java.io.InputStream
 import java.util.*
 
 class DefaultGratitudeRepository(

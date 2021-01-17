@@ -9,16 +9,14 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.ServiceLocator
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
+import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)

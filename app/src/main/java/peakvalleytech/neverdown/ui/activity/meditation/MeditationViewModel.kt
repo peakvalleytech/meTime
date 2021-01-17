@@ -1,12 +1,8 @@
 package peakvalleytech.neverdown.ui.activity.meditation
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.*
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
-import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel
 
 class MeditationViewModel : ViewModel() {
 

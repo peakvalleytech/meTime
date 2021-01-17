@@ -3,7 +3,6 @@ package peakvalleytech.neverdown.ui.base
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
 
 /**
  * A ViewModel used to provide pondering feature for an activity

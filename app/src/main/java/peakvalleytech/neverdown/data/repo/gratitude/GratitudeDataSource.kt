@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.data.repo
+package peakvalleytech.neverdown.data.repo.gratitude
 
 import androidx.lifecycle.LiveData
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem

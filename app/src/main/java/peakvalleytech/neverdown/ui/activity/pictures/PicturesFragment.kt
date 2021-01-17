@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import peakvalleytech.neverdown.NeverDownApplication
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
+import peakvalleytech.neverdown.databinding.FragmentPicturesBinding
 
 class PicturesFragment : Fragment() {
     private val viewModel by viewModels<PicturesViewModel> {
@@ -21,17 +22,17 @@ class PicturesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = inflate<FragmentGratitudeBinding>(
+        val binding = inflate<FragmentPicturesBinding>(
             inflater,
-            R.layout.fragment_gratitude,
+            R.layout.fragment_pictures,
             container,
             false
         )
-        binding.gratitudeViewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.mItems.observe(viewLifecycleOwner, Observer {
-            viewModel.updateCurrentItem()
-        })
+        binding.viewModel = viewModel
+//        binding.lifecycleOwner = viewLifecycleOwner
+//        viewModel.mItems.observe(viewLifecycleOwner, Observer {
+//            viewModel.updateCurrentItem()
+//        })
 
         return binding.root
     }

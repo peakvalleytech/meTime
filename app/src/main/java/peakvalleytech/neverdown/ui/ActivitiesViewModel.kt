@@ -2,7 +2,6 @@ package peakvalleytech.neverdown.ui
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
 
 @ExperimentalCoroutinesApi
 class ActivitiesViewModel /*@ViewModelInject constructor(private val gratitudeRepository : GratitudeRepository)*/

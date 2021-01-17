@@ -2,11 +2,11 @@ package peakvalleytech.neverdown.data.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.runBlocking
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
+import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 
-class FakeGratitudeRepository : GratitudeRepository {
+class FakeGratitudeRepository :
+    GratitudeRepository {
     private var itemsServiceData: MutableList<GratitudeItem> = mutableListOf()
     override fun getItems(): LiveData<List<GratitudeItem>> {
         return MutableLiveData(itemsServiceData)

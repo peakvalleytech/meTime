@@ -1,7 +1,7 @@
 package peakvalleytech.neverdown
 
 import android.app.Application
-import peakvalleytech.neverdown.data.repo.GratitudeRepository
+import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.data.repo.QuotesRepository
 
 class NeverDownApplication : Application() {
