@@ -41,11 +41,11 @@ class QuotesViewModelTest {
     fun observeItems_shouldGetAllItems() {
         val observer = Observer<List<Quote>> {}
         try {
-            quotesViewModel.mItems.observeForever(observer)
-            val quotes = quotesViewModel.mItems.value
+            quotesViewModel.mQuotes.observeForever(observer)
+            val quotes = quotesViewModel.mQuotes.value
             assertThat(quotes?.size , `is`(3))
         } finally {
-            quotesViewModel.mItems.removeObserver(observer)
+            quotesViewModel.mQuotes.removeObserver(observer)
         }
     }
 
@@ -53,11 +53,11 @@ class QuotesViewModelTest {
     fun observeItems_shouldNotGetLessThanAll() {
         val observer = Observer<List<Quote>> {}
         try {
-            quotesViewModel.mItems.observeForever(observer)
-            val quotes = quotesViewModel.mItems.value
+            quotesViewModel.mQuotes.observeForever(observer)
+            val quotes = quotesViewModel.mQuotes.value
             assertThat(quotes?.size , not(`is`(1)))
         } finally {
-            quotesViewModel.mItems.removeObserver(observer)
+            quotesViewModel.mQuotes.removeObserver(observer)
         }
     }
 }

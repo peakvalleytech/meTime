@@ -12,10 +12,9 @@ class ActivitiesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activities_activity)
 //        binding = DataBindingUtil.setContentView(this, R.layout.activities_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_host, ActivitiesListFragment.newInstance())
-                    .commitNow()
-        }
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.fragment_host, ActivitiesListFragment())
+        transaction.commit()
+
     }
 }

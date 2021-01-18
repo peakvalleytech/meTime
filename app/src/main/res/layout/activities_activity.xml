@@ -8,9 +8,8 @@
     android:padding="16dp"
     tools:context=".ui.ActivitiesActivity" >
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_host"
-        android:name="peakvalleytech.neverdown.ui.activitylist.ActivitiesListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

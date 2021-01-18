@@ -32,6 +32,7 @@ class ActivitiesListFragment : Fragment() {
                 val fgm =  it@parentFragmentManager
                 val fragment = GratitudeFragment()
                 val fragTrans = fgm.beginTransaction()
+//                fragTrans.setPrimaryNavigationFragment(this)
                 fragTrans.addToBackStack(null)
                 fragTrans.replace(R.id.fragment_host, fragment)
                 fragTrans.commit()

@@ -12,18 +12,19 @@ import org.junit.Test
 import peakvalleytech.neverdown.data.source.FakeGratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel
+import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionViewModel
 
-class GratitudeViewModelTest {
+class GratitudeSessionViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var gratitudeViewModel: GratitudeViewModel
+    private lateinit var gratitudeSessionViewModel: GratitudeSessionViewModel
     private lateinit var gratitudeRepository: FakeGratitudeRepository
     @Before
     fun setUp() {
         gratitudeRepository = FakeGratitudeRepository()
         gratitudeRepository.addItems("Place to sleep", "Food", "Water", "Clothes", "Computer")
-        gratitudeViewModel = GratitudeViewModel(gratitudeRepository)
+        gratitudeSessionViewModel = GratitudeSessionViewModel(gratitudeRepository)
     }
 
     /**
@@ -32,10 +33,26 @@ class GratitudeViewModelTest {
      */
     @Test
     fun observeItems_shouldGetAllItems() {
+        val observer = Observer<List<GratitudeItem>> {}
+        try {
+            gratitudeSessionViewModel.mItems.observeForever(observer)
+            val items = gratitudeSessionViewModel.mItems.value
+            assertThat(items?.size , `is`(5))
+        } finally {
+            gratitudeSessionViewModel.mItems.removeObserver(observer)
+        }
     }
 
     @Test
     fun observeItems_shouldNotGetLessThanAll() {
+        val observer = Observer<List<GratitudeItem>> {}
+        try {
+            gratitudeSessionViewModel.mItems.observeForever(observer)
+            val items = gratitudeSessionViewModel.mItems.value
+            assertThat(items?.size , not(`is`(3)))
+        } finally {
+            gratitudeSessionViewModel.mItems.removeObserver(observer)
+        }
     }
 
     /**
