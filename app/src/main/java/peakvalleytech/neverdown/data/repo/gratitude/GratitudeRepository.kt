@@ -14,4 +14,10 @@ interface GratitudeRepository {
      * @return the list of all items
      */
     fun getItems(): LiveData<List<GratitudeItem>>
+
+    suspend fun addItem(item: GratitudeItem)
+
+//    fun updateItem(item: GratitudeItem)
+
+    suspend fun deleteItem(item: GratitudeItem)
 }

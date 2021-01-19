@@ -35,6 +35,14 @@ class DefaultGratitudeRepository(
         return data
     }
 
+    override suspend fun addItem(item: GratitudeItem) {
+        gratitudeDataSource.addItem(item)
+    }
+
+    override suspend fun deleteItem(item: GratitudeItem) {
+        gratitudeDataSource.deleteItem(item)
+    }
+
     private suspend fun loadData() {
         try {
             println("Start loadData")

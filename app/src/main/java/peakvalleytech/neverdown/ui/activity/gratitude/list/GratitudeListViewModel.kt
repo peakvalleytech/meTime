@@ -15,14 +15,10 @@ class GratitudeListViewModel(
     private val gratitudeRepository : GratitudeRepository
 ) : ViewModel() {
 
-    private lateinit var list: LiveData<List<GratitudeItem>>
+    private var _listLiveData: MutableLiveData<List<GratitudeItem>> = MutableLiveData()
+    var listLiveData: LiveData<List<GratitudeItem>> = _listLiveData
 
     val mutableLiveData: MutableLiveData<Event<Class<out Fragment>>> = MutableLiveData()
-    fun luanchSessionFragment() {
-        viewModelScope.launch {
-            mutableLiveData.postValue(Event(GratitudeSessionFragment::class.java as Class<out Fragment>))
-        }
-    }
 
     fun deleteItem(item: GratitudeItem) {
 

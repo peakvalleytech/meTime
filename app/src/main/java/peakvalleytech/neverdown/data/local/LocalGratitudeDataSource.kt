@@ -17,4 +17,12 @@ class LocalGratitudeDataSource internal constructor(
     override suspend fun insertItems(items: List<GratitudeItem>)  = withContext(ioDispatcher){
         gratitudeItemDao.insertItems(items)
     }
+
+    override suspend fun addItem(item: GratitudeItem) {
+        gratitudeItemDao.insertItem(item)
+    }
+
+    override suspend fun deleteItem(item: GratitudeItem) {
+        gratitudeItemDao.deleteItem(item)
+    }
 }

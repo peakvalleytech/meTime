@@ -6,10 +6,12 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import peakvalleytech.neverdown.NeverDownApplication
@@ -41,38 +43,36 @@ class GratitudeListFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
-            val fragment: Class<out Fragment>? = it.getContentIfNotHandled()
-            if(fragment != null) {
-                val transaction = parentFragmentManager.beginTransaction()
-//            parentFragmentManager.primaryNavigationFragment
-                transaction.setPrimaryNavigationFragment(this)
-                transaction.addToBackStack(null)
-                transaction.replace(R.id.fragment_host, GratitudeSessionFragment())
-                transaction.commit()
-            }
-
+        val recyclerView: RecyclerView = binding.recycler
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        viewModel.listLiveData.observe(viewLifecycleOwner, Observer {
+            recyclerView.adapter = MyListAdapter(it)
         })
-
         return binding.root
     }
 
     class MyListAdapter(val items: List<GratitudeItem>) : RecyclerView.Adapter<MyListAdapter.ListViewHolder>() {
 
         class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            private lateinit var text: TextView
 
+            fun bind(item: GratitudeItem) {
+                text = itemView.findViewById<TextView>(android.R.id.text1)
+                text.text = item.name
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-            TODO("Not yet implemented")
+            val view = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
+            return ListViewHolder(view)
         }
 
         override fun getItemCount(): Int {
-            TODO("Not yet implemented")
+            return items.size
         }
 
         override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-            TODO("Not yet implemented")
+            holder.bind(items[position])
         }
 
     }

@@ -6,4 +6,6 @@ import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 interface GratitudeDataSource {
     suspend fun getAllItems(): List<GratitudeItem>
     suspend fun  insertItems(items : List<GratitudeItem>)
+    suspend fun addItem(item: GratitudeItem)
+    suspend fun deleteItem(item: GratitudeItem)
 }
