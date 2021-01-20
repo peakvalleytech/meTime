@@ -105,4 +105,6 @@ dependencies {
     implementation "androidx.test:core:$androidXTestCoreVersion"
 
 
+    // Debug db
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

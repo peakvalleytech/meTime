@@ -24,7 +24,9 @@ class GratitudeListViewModel(
 
 
     fun deleteItem(item: GratitudeItem) {
-
+        viewModelScope.launch {
+            gratitudeRepository.deleteItem(item)
+        }
     }
 
     fun addItem(item: GratitudeItem) {
