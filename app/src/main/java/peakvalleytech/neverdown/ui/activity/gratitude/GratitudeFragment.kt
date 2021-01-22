@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import peakvalleytech.neverdown.NeverDownApplication
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
+import peakvalleytech.neverdown.ui.activity.SessionFragment
 import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionFragment
 
 class GratitudeFragment : Fragment() {
@@ -34,16 +35,27 @@ class GratitudeFragment : Fragment() {
         viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
             val fragment: Class<out Fragment>? = it.getContentIfNotHandled()
             if(fragment != null) {
-                val transaction = parentFragmentManager.beginTransaction()
+                var transaction = parentFragmentManager.beginTransaction()
 //            parentFragmentManager.primaryNavigationFragment
                 transaction.setPrimaryNavigationFragment(this)
                 transaction.addToBackStack(null)
                 transaction.replace(R.id.fragment_host, fragment.newInstance())
                 transaction.commit()
+//
+//                transaction = parentFragmentManager.beginTransaction()
+////            parentFragmentManager.primaryNavigationFragment
+////                transaction.setPrimaryNavigationFragment(this)
+////                transaction.addToBackStack(null)
+//                transaction.replace(R.id.fragment_session_timer, SessionFragment(), "timer")
+//                transaction.commit()
             }
 
         })
 
         return binding.root
+
+
     }
+
+
 }

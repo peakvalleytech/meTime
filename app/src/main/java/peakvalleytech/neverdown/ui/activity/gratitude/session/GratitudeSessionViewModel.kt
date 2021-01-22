@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
+import java.util.*
 import kotlin.random.Random
 
 class GratitudeSessionViewModel(
@@ -30,6 +31,16 @@ class GratitudeSessionViewModel(
     val mItem : LiveData<GratitudeItem> = _mItem
 
     /**
+     *  The current value of timer in milliseconds
+     */
+    private val _mTimer = MutableLiveData<Float>()
+    val mTimer: LiveData<Float> = _mTimer
+
+    private var _mTimerLength: Int = 0
+    private var _mStartMillis: Long = 0
+
+
+    /**
      * Keep track of which items have already been shown to avoid showing the same item
      * twice per session
      */
@@ -51,6 +62,19 @@ class GratitudeSessionViewModel(
         val items = mItems.value
         var index = rand(0, items?.size as Int)
         _mItem.value = items.get(index)
+    }
+
+    fun startTimer(millis: Int) {
+        _mStartMillis = Calendar.getInstance().timeInMillis
+        _mTimerLength = millis
+        _mTimer.value = 0F
+
+    }
+
+    fun updateTimer() {
+        val currentMillis = Calendar.getInstance().timeInMillis;
+        _mTimer.value = (currentMillis - _mStartMillis) / _mTimerLength as Float
+
     }
     fun isGrateful(boolean: Boolean) {
         _mIsGrateful.value = boolean

@@ -12,6 +12,7 @@ import peakvalleytech.neverdown.NeverDownApplication
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
 import peakvalleytech.neverdown.databinding.FragmentGratitudeSessionBinding
+import peakvalleytech.neverdown.ui.activity.SessionFragment
 
 class GratitudeSessionFragment : Fragment() {
     private val viewModel by viewModels<GratitudeSessionViewModel> {
@@ -32,6 +33,15 @@ class GratitudeSessionFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.mItems.observe(viewLifecycleOwner, Observer {
             viewModel.updateCurrentItem()
+        })
+
+        val lengthIntMillis = activity?.intent?.getIntExtra("timerLengthMillis", 60000)
+        if (lengthIntMillis != null) {
+            viewModel.startTimer(lengthIntMillis)
+        }
+
+        viewModel.mTimer.observe(viewLifecycleOwner, Observer {
+            viewModel.updateTimer()
         })
 
         return binding.root
