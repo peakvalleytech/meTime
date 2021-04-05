@@ -2,6 +2,9 @@ package peakvalleytech.neverdown.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.databinding.DataBindingUtil
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.ActivitiesActivityBinding
 import peakvalleytech.neverdown.ui.activitylist.ActivitiesListFragment
@@ -15,6 +18,5 @@ class ActivitiesActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.fragment_host, ActivitiesListFragment())
         transaction.commit()
-
     }
 }

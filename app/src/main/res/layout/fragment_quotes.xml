@@ -7,7 +7,7 @@
 
         <variable
             name="quotesViewModel"
-            type="peakvalleytech.neverdown.ui.activity.quotes.QuotesViewModel" />
+            type="peakvalleytech.neverdown.ui.activity.words.QuotesViewModel" />
 
     </data>
 

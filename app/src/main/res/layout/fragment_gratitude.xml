@@ -5,56 +5,60 @@
 <data>
 <variable name="viewModel" type="peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel"/>
 </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/colorPrimary">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/titile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Gratitude"-->
+<!--            android:textSize="30sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/gratitudeItemText"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:text="Take some time to be grateful for the many blessings in your life. You'll feel better."-->
+<!--            android:textSize="30sp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/notGratefulButton"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/titile" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/startSessionButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:onClick="@{() -> viewModel.launchSessionFragment()}"-->
+<!--            android:text="Start Session"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/gratefulButton"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/gratitudeItemText" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/manageGratitudesButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:onClick="@{() -> viewModel.launchListFragment()}"-->
+<!--            android:text="Manage Gratitudes"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/notGratefulButton"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/gratitudeItemText" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
-
-        <TextView
-            android:id="@+id/titile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gratitude"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/gratitudeItemText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Take some time to be grateful for the many blessings in your life. You'll feel better."
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/notGratefulButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titile" />
-
-        <Button
-            android:id="@+id/startSessionButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:onClick="@{() -> viewModel.launchSessionFragment()}"
-            android:text="Start Session"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/gratefulButton"
-            app:layout_constraintTop_toBottomOf="@+id/gratitudeItemText" />
-
-        <Button
-            android:id="@+id/manageGratitudesButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:onClick="@{() -> viewModel.launchListFragment()}"
-            android:text="Manage Gratitudes"
-            app:layout_constraintEnd_toStartOf="@+id/notGratefulButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gratitudeItemText" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"/>
 </layout>

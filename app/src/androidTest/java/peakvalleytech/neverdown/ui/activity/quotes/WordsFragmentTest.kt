@@ -11,7 +11,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -20,10 +19,11 @@ import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.ServiceLocator
 import peakvalleytech.neverdown.data.repo.QuotesRepository
 import peakvalleytech.neverdown.model.quotes.Quote
+import peakvalleytech.neverdown.ui.activity.words.WordsFragment
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)
-class QuotesFragmentTest {
+class WordsFragmentTest {
     private lateinit var repository: QuotesRepository
     @Before
     fun initRepository() {
@@ -42,7 +42,7 @@ class QuotesFragmentTest {
 
     @Test
     fun testUI() = runBlockingTest {
-        launchFragmentInContainer<QuotesFragment>(Bundle(), R.style.AppTheme)
+        launchFragmentInContainer<WordsFragment>(Bundle(), R.style.AppTheme)
         delay(3000)
         var uniqueItemNames : MutableSet<String> = mutableSetOf()
         Thread.sleep(1000)

@@ -14,7 +14,7 @@ import peakvalleytech.neverdown.data.source.FakeQuotesRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.model.quotes.Quote
 import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel
-import peakvalleytech.neverdown.ui.activity.quotes.QuotesViewModel
+import peakvalleytech.neverdown.ui.activity.words.QuotesViewModel
 
 class QuotesViewModelTest {
     @get:Rule

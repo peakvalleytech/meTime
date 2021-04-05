@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.ui.activity.quotes
+package peakvalleytech.neverdown.ui.activity.words
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

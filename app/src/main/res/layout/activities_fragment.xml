@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.activitylist.ActivitiesListFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
 
-    <Button
-        android:id="@+id/gratitudeButton"
+</data>
+<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:id="@+id/main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        tools:context=".ui.activitylist.ActivitiesListFragment">-->
+<!--    -->
+<!--        <Button-->
+<!--            android:id="@+id/gratitudeButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Gratitude" />-->
+<!--    -->
+<!--        <Button-->
+<!--            android:id="@+id/meditationButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Meditation" />-->
+<!--    -->
+<!--        <Button-->
+<!--            android:id="@+id/quotesButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Quotes" />-->
+<!--    -->
+<!--        &lt;!&ndash;    <androidx.cardview.widget.CardView&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:layout_height="wrap_content" />&ndash;&gt;-->
+<!--    </LinearLayout>-->
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gratitude" />
-
-    <Button
-        android:id="@+id/meditationButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Meditation" />
-
-    <Button
-        android:id="@+id/quotesButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quotes" />
-
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content" />-->
-</LinearLayout>
+        android:layout_height="match_parent">
+    </androidx.compose.ui.platform.ComposeView>
+</layout>

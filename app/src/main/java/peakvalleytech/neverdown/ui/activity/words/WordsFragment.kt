@@ -1,4 +1,4 @@
-package peakvalleytech.neverdown.ui.activity.quotes
+package peakvalleytech.neverdown.ui.activity.words
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
 import peakvalleytech.neverdown.databinding.FragmentQuotesBinding
 
-class QuotesFragment : Fragment() {
+class WordsFragment : Fragment() {
     private val viewModel by viewModels<QuotesViewModel> {
         QuotesViewModelFactory((requireContext().applicationContext as NeverDownApplication).quotesRepository)
     }

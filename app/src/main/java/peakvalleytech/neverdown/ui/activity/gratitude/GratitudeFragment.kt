@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -29,28 +30,35 @@ class GratitudeFragment : Fragment() {
             container,
             false
         )
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-
-        viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
-            val fragment: Class<out Fragment>? = it.getContentIfNotHandled()
-            if(fragment != null) {
-                var transaction = parentFragmentManager.beginTransaction()
-//            parentFragmentManager.primaryNavigationFragment
-                transaction.setPrimaryNavigationFragment(this)
-                transaction.addToBackStack(null)
-                transaction.replace(R.id.fragment_host, fragment.newInstance())
-                transaction.commit()
+//        binding.viewModel = viewModel
+//        binding.lifecycleOwner = viewLifecycleOwner
 //
-//                transaction = parentFragmentManager.beginTransaction()
+//
+//        viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
+//            val fragment: Class<out Fragment>? = it.getContentIfNotHandled()
+//            if(fragment != null) {
+//                var transaction = parentFragmentManager.beginTransaction()
 ////            parentFragmentManager.primaryNavigationFragment
-////                transaction.setPrimaryNavigationFragment(this)
-////                transaction.addToBackStack(null)
-//                transaction.replace(R.id.fragment_session_timer, SessionFragment(), "timer")
+//                transaction.setPrimaryNavigationFragment(this)
+//                transaction.addToBackStack(null)
+//                transaction.replace(R.id.fragment_host, fragment.newInstance())
 //                transaction.commit()
+////
+////                transaction = parentFragmentManager.beginTransaction()
+//////            parentFragmentManager.primaryNavigationFragment
+//////                transaction.setPrimaryNavigationFragment(this)
+//////                transaction.addToBackStack(null)
+////                transaction.replace(R.id.fragment_session_timer, SessionFragment(), "timer")
+////                transaction.commit()
+//            }
+//
+//        })
+        binding.composeView.setContent {
+            // You're in Compose world!
+            MaterialTheme {
+                GratitudeScreen()
             }
-
-        })
+        }
 
         return binding.root
 
