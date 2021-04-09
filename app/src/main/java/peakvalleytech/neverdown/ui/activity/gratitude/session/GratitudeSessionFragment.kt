@@ -31,18 +31,18 @@ class GratitudeSessionFragment : Fragment() {
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.mItems.observe(viewLifecycleOwner, Observer {
-            viewModel.updateCurrentItem()
-        })
+//        viewModel.mItems.observe(viewLifecycleOwner, Observer {
+//            viewModel.updateCurrentItem()
+//        })
 
         val lengthIntMillis = activity?.intent?.getIntExtra("timerLengthMillis", 60000)
         if (lengthIntMillis != null) {
             viewModel.startTimer(lengthIntMillis)
         }
 
-        viewModel.mTimer.observe(viewLifecycleOwner, Observer {
-            viewModel.updateTimer()
-        })
+//        viewModel.mTimer.observe(viewLifecycleOwner, Observer {
+//            viewModel.updateTimer()
+//        })
 
         return binding.root
     }

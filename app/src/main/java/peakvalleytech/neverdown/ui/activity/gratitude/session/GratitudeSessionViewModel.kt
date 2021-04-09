@@ -1,5 +1,8 @@
 package peakvalleytech.neverdown.ui.activity.gratitude.session
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,12 +20,14 @@ class GratitudeSessionViewModel(
      */
     private var _mItems = gratitudeRepository.getItems()
     val mItems: LiveData<List<GratitudeItem>> = _mItems
-
+//    var items: List<GratitudeItem> by mutableStateOf(gratitudeRepository.getItems())
+//        private set
+//
     /**
      * Indciates whether the user is grateful for the currently shown item
      */
-    private val _mIsGrateful = MutableLiveData<Boolean>()
-    val mIsGrateful = _mIsGrateful
+//    private val _mIsGrateful = MutableLiveData<Boolean>()
+//    val mIsGrateful = _mIsGrateful
 
     /**
      * The currently displayed item
@@ -33,11 +38,11 @@ class GratitudeSessionViewModel(
     /**
      *  The current value of timer in milliseconds
      */
-    private val _mTimer = MutableLiveData<Float>()
-    val mTimer: LiveData<Float> = _mTimer
-
-    private var _mTimerLength: Int = 0
-    private var _mStartMillis: Long = 0
+//    private val _mTimer = MutableLiveData<Float>()
+//    val mTimer: LiveData<Float> = _mTimer
+//
+//    private var _mTimerLength: Int = 0
+//    private var _mStartMillis: Long = 0
 
 
     /**
@@ -59,25 +64,25 @@ class GratitudeSessionViewModel(
      * Select a new item from the items list and set it to current item
      */
     fun updateCurrentItem() {
-        val items = mItems.value
-        var index = rand(0, items?.size as Int)
-        _mItem.value = items.get(index)
+//        val items = items
+//        var index = rand(0, items?.size as Int)
+//        _mItem.value = items.get(index)
     }
 
     fun startTimer(millis: Int) {
-        _mStartMillis = Calendar.getInstance().timeInMillis
-        _mTimerLength = millis
-        _mTimer.value = 0F
+//        _mStartMillis = Calendar.getInstance().timeInMillis
+//        _mTimerLength = millis
+//        _mTimer.value = 0F
 
     }
 
     fun updateTimer() {
         val currentMillis = Calendar.getInstance().timeInMillis;
-        _mTimer.value = (currentMillis - _mStartMillis) / _mTimerLength as Float
+//        _mTimer.value = (currentMillis - _mStartMillis) / _mTimerLength as Float
 
     }
     fun isGrateful(boolean: Boolean) {
-        _mIsGrateful.value = boolean
+//        _mIsGrateful.value = boolean
     }
 
     private val random = Random
