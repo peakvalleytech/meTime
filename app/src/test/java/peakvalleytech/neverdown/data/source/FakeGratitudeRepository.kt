@@ -12,6 +12,14 @@ class FakeGratitudeRepository :
         return MutableLiveData(itemsServiceData)
     }
 
+    override suspend fun addItem(item: GratitudeItem) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteItem(item: GratitudeItem) {
+        TODO("Not yet implemented")
+    }
+
     fun addItems(vararg itemNames: String) {
 //        val itemNames = listOf("Place to sleep", "Food", "Water", "Clothes", "Computer")
         var id = 1

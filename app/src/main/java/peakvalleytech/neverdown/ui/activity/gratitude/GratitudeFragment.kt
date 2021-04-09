@@ -8,12 +8,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import peakvalleytech.neverdown.NeverDownApplication
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
-import peakvalleytech.neverdown.ui.activity.SessionFragment
-import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionFragment
 
 class GratitudeFragment : Fragment() {
     private val viewModel by viewModels<GratitudeViewModel> {
@@ -56,7 +53,7 @@ class GratitudeFragment : Fragment() {
         binding.composeView.setContent {
             // You're in Compose world!
             MaterialTheme {
-                GratitudeScreen()
+//                GratitudeScreen(navController)
             }
         }
 

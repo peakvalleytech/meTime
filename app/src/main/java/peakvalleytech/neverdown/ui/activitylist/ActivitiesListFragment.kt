@@ -6,16 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.compose.material.MaterialTheme
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.fragment_gratitude.*
 import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.ActivitiesFragmentBinding
 import peakvalleytech.neverdown.ui.ActivitiesViewModel
-import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeFragment
-import peakvalleytech.neverdown.ui.activity.meditation.MeditationFragment
-import peakvalleytech.neverdown.ui.activity.words.WordsFragment
 
 class ActivitiesListFragment : Fragment() {
 
@@ -34,7 +30,7 @@ class ActivitiesListFragment : Fragment() {
                .apply {
                    view.setContent {
                        MaterialTheme {
-                           ActivitiesListScreen()
+//                           ActivitiesListScreen(navController)
                        }
                    }
                }

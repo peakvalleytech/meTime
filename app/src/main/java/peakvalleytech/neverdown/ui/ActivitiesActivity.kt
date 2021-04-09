@@ -1,22 +1,30 @@
 package peakvalleytech.neverdown.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.databinding.DataBindingUtil
-import peakvalleytech.neverdown.R
-import peakvalleytech.neverdown.databinding.ActivitiesActivityBinding
-import peakvalleytech.neverdown.ui.activitylist.ActivitiesListFragment
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import peakvalleytech.neverdown.ui.activitylist.ActivitiesListScreen
+import peakvalleytech.neverdown.ui.theme.AppTheme
 
-class ActivitiesActivity : AppCompatActivity() {
-    lateinit var  binding: ActivitiesActivityBinding
+class ActivitiesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activities_activity)
-//        binding = DataBindingUtil.setContentView(this, R.layout.activities_activity)
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_host, ActivitiesListFragment())
-        transaction.commit()
+//        setContentView(R.layout.activities_activity)
+
+
+        setContent {
+            AppTheme {
+                MyNavigation(context = applicationContext)
+            }
+        }
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.add(R.id.fragment_host, ActivitiesListFragment())
+
+//        transaction.commit()
+
     }
 }
