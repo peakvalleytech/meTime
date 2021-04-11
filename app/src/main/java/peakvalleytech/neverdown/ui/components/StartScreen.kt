@@ -35,12 +35,10 @@ fun StartScreen(onStartActivity: () -> Unit, title: String, description: String,
                     .padding(bottom = Dp(16f)), color = colorPrimaryDark, fontSize = 24.sp)
         }
 
-        Row(modifier = Modifier.fillMaxHeight(1f).background(colorAccent), verticalAlignment = Alignment.Bottom) {
-            Button(onClick = {
-                onStartActivity()
-            }, modifier = Modifier.fillMaxWidth()) {
-                Text("Start Activity")
-            }
+        Row(modifier = Modifier
+            .fillMaxHeight(1f),
+            verticalAlignment = Alignment.Bottom) {
+            button(text = "Start Activity", onClick = { onStartActivity() }, modifier = Modifier.fillMaxWidth())
         }
 
     }

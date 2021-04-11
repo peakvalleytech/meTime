@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -20,6 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
+import peakvalleytech.neverdown.ui.components.button
+import peakvalleytech.neverdown.ui.theme.buttonColors
 import peakvalleytech.neverdown.ui.theme.colorAccent
 import peakvalleytech.neverdown.ui.theme.colorPrimary
 import peakvalleytech.neverdown.ui.theme.colorPrimaryDark
@@ -58,9 +61,14 @@ fun content(itemName: String, onNextListener: () -> Unit) {
             .fillMaxWidth(1.0f)
             .fillMaxHeight()
             .border(width = Dp(1f), color = Color.Yellow)) {
-            button("Yes", onNextListener, modifier = Modifier.fillMaxWidth(0.5f).background(
-                colorAccent))
-            button("No", onNextListener, modifier = Modifier.fillMaxWidth(1f).background(colorAccent))
+            button("Yes", onNextListener, modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .background(
+                    colorAccent
+                ))
+            button("No", onNextListener, modifier = Modifier
+                .fillMaxWidth(1f)
+                .background(colorAccent))
         }
     }
 }
@@ -82,14 +90,7 @@ fun item(itemText: String) {
 
 }
 
-@Composable
-fun button(text: String, onClick: () -> Unit, modifier: Modifier) {
-    Button(onClick = {
-        onClick()
-    }, modifier = modifier) {
-        Text(text)
-    }
-}
+
 
 @Composable
 @Preview

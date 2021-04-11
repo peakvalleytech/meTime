@@ -11,33 +11,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
+import peakvalleytech.neverdown.ui.components.button
 
 
 @Composable
 fun ActivitiesListScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxWidth()) {
-        Button(modifier = Modifier
+
+
+        button("Gratitude", modifier = Modifier
             .fillMaxWidth()
             .padding(all = Dp(10f)), onClick = {
                 navController.navigate("gratitude_screen")
-        }) {
-            Text("Gratitude")
-        }
+        })
 
-        Button(onClick = {
+        button("Meditation", onClick = {
             navController.navigate("meditation_screen")
         }, modifier = Modifier
             .fillMaxWidth()
-            .padding(all = Dp(10f))) {
-            Text("Meditation")
-        }
-        Button(onClick = { /*TODO*/ }, modifier = Modifier
+            .padding(all = Dp(10f)))
+        button("Values", onClick = { /*TODO*/ }, modifier = Modifier
             .fillMaxWidth()
-            .padding(all = Dp(10f))) {
-            Text("Power Words")
-        }
+            .padding(all = Dp(10f)))
     }
-
 }
 
 @Preview
