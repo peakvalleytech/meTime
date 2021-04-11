@@ -13,6 +13,10 @@ import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModel
 import peakvalleytech.neverdown.ui.activity.gratitude.GratitudeViewModelFactory
 import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionScreen
 import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionViewModel
+import peakvalleytech.neverdown.ui.activity.meditation.MeditationScreen
+import peakvalleytech.neverdown.ui.activity.meditation.MeditationViewModel
+import peakvalleytech.neverdown.ui.activity.meditation.session.MediationSessionScreen
+import peakvalleytech.neverdown.ui.activity.meditation.session.MeditationSessionViewModel
 import peakvalleytech.neverdown.ui.activitylist.ActivitiesListScreen
 
 @Composable
@@ -33,5 +37,13 @@ fun MyNavigation(context: Context) {
             val viewModel = GratitudeSessionViewModel(gratitudeRepository = (context as NeverDownApplication).gratitudeRepository)
             GratitudeSessionScreen(viewModel = viewModel)
         }
+        composable("meditation_screen") { 
+            MeditationScreen(navController = navController)
+        }
+        composable("meditation_session_screen") { 
+            val viewModel = MeditationSessionViewModel()
+            MediationSessionScreen(viewModel = viewModel)
+        }
+        
     }
 }

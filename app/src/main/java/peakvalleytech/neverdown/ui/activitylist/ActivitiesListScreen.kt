@@ -24,7 +24,9 @@ fun ActivitiesListScreen(navController: NavHostController) {
             Text("Gratitude")
         }
 
-        Button(onClick = { /*TODO*/ }, modifier = Modifier
+        Button(onClick = {
+            navController.navigate("meditation_screen")
+        }, modifier = Modifier
             .fillMaxWidth()
             .padding(all = Dp(10f))) {
             Text("Meditation")

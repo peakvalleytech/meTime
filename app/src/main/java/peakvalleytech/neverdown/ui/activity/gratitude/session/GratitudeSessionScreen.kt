@@ -85,7 +85,7 @@ fun item(itemText: String) {
 @Composable
 fun button(text: String, onClick: () -> Unit, modifier: Modifier) {
     Button(onClick = {
-        onClick
+        onClick()
     }, modifier = modifier) {
         Text(text)
     }
