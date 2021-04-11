@@ -15,8 +15,8 @@ fun MeditationScreen(navController: NavHostController?) {
     Column(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()) {
-        StartScreen(onStartActivity = { navController?.navigate("gratitude_session_screen") },
-            title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
+        StartScreen(onStartActivity = { navController?.navigate("meditation_session_screen") },
+            title = "Meditation", description = "Meditation is a great way to give the mind some rest ",
             menu = { /*TODO*/ })
     }
 }

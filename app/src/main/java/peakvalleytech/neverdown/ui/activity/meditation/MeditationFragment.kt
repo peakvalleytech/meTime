@@ -27,22 +27,22 @@ class MeditationFragment: Fragment() {
             container,
             false
         )
-        binding.meditationViewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.startCounter()
-        viewModel.mBreathCounter.observe(viewLifecycleOwner, Observer {
-            viewModel.incrementCounter()
-        })
-
-        viewModel.mBreathState.observe(viewLifecycleOwner, Observer {
-            if(it == viewModel.INHALE_STATE) {
-                binding.showInhaleText = View.VISIBLE
-                binding.showExhaleText = View.INVISIBLE
-            } else if(it == viewModel.EXHALE_STATE) {
-                binding.showInhaleText = View.INVISIBLE
-                binding.showExhaleText = View.VISIBLE
-            }
-        })
+//        binding.meditationViewModel = viewModel
+//        binding.lifecycleOwner = viewLifecycleOwner
+//        viewModel.startCounter()
+//        viewModel.mBreathCounter.observe(viewLifecycleOwner, Observer {
+//            viewModel.incrementCounter()
+//        })
+//
+//        viewModel.mBreathState.observe(viewLifecycleOwner, Observer {
+//            if(it == viewModel.INHALE_STATE) {
+//                binding.showInhaleText = View.VISIBLE
+//                binding.showExhaleText = View.INVISIBLE
+//            } else if(it == viewModel.EXHALE_STATE) {
+//                binding.showInhaleText = View.INVISIBLE
+//                binding.showExhaleText = View.VISIBLE
+//            }
+//        })
         return binding.root
     }
 }
