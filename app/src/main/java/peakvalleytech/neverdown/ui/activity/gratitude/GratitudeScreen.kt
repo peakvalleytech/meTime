@@ -24,6 +24,7 @@ import androidx.navigation.compose.navigate
 import peakvalleytech.neverdown.ui.activity.gratitude.session.content
 import peakvalleytech.neverdown.ui.activity.gratitude.session.randomInt
 import peakvalleytech.neverdown.ui.components.StartScreen
+import peakvalleytech.neverdown.ui.components.button
 import peakvalleytech.neverdown.ui.theme.colorAccent
 
 @Composable
@@ -31,6 +32,7 @@ fun GratitudeScreen(navController: NavHostController?, viewModel: GratitudeViewM
     Column(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()) {
+        button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier)
         StartScreen(onStartActivity = { navController?.navigate("gratitude_session_screen") },
             title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
             menu = { /*TODO*/ })

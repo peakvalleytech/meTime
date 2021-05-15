@@ -12,32 +12,37 @@ import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import peakvalleytech.neverdown.ui.components.button
+import peakvalleytech.neverdown.ui.components.card
 
 
 @Composable
 fun ActivitiesListScreen(navController: NavHostController) {
+    val startButtonLabel = "Start"
     Column(modifier = Modifier.fillMaxWidth()) {
-
-
-        button("Gratitude", modifier = Modifier
+        card("Gratitude",
+            {button(startButtonLabel, modifier = Modifier
             .fillMaxWidth()
             .padding(all = Dp(10f)), onClick = {
                 navController.navigate("gratitude_screen")
-        })
+            })}
+        )
 
-        button("Meditation", onClick = {
-            navController.navigate("meditation_screen")
-        }, modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = Dp(10f)))
-        button("Values", onClick = { /*TODO*/ }, modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = Dp(10f)))
+        card("Meditation",
+            {button(startButtonLabel, onClick = {
+                navController.navigate("meditation_screen")
+                }, modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = Dp(10f)))
+            })
+//
+//        button("Values", onClick = { /*TODO*/ }, modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(all = Dp(10f)))
     }
 }
 
 @Preview
 @Composable
 fun ActivitiesListScreenPreview() {
-//    ActivitiesListScreen(navController)
+//    ActivitiesListScreen(()
 }

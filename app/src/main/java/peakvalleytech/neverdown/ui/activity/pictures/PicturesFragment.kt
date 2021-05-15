@@ -14,10 +14,7 @@ import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
 import peakvalleytech.neverdown.databinding.FragmentPicturesBinding
 
 class PicturesFragment : Fragment() {
-    private val viewModel by viewModels<PicturesViewModel> {
-        PicturesViewModelFactory((requireContext().applicationContext as NeverDownApplication).gratitudeRepository)
-    }
-
+    private val viewModel = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

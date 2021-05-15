@@ -20,6 +20,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.lifecycle.viewmodel.compose.viewModel
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.ui.components.button
 import peakvalleytech.neverdown.ui.theme.buttonColors
@@ -28,8 +29,8 @@ import peakvalleytech.neverdown.ui.theme.colorPrimary
 import peakvalleytech.neverdown.ui.theme.colorPrimaryDark
 
 @Composable
-fun GratitudeSessionScreen(viewModel: GratitudeSessionViewModel) {
-    val list: List<GratitudeItem> by viewModel.mItems.observeAsState(listOf())
+fun GratitudeSessionScreen(viewmodel: GratitudeSessionViewModel = viewModel()) {
+    val list: List<GratitudeItem> by viewmodel.mItems.observeAsState(listOf())
     val (item, setItem) = remember {mutableStateOf(GratitudeItem())}
     Column(modifier = Modifier
         .fillMaxWidth()

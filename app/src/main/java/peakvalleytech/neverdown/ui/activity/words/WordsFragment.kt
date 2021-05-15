@@ -15,10 +15,7 @@ import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
 import peakvalleytech.neverdown.databinding.FragmentQuotesBinding
 
 class WordsFragment : Fragment() {
-    private val viewModel by viewModels<QuotesViewModel> {
-        QuotesViewModelFactory((requireContext().applicationContext as NeverDownApplication).quotesRepository)
-    }
-
+    private val viewModel = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,10 +28,10 @@ class WordsFragment : Fragment() {
         )
         binding.quotesViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.mQuotes.observe(viewLifecycleOwner, Observer {
-            viewModel.updateCurrentQuote()
-            viewModel.startPondering()
-        })
+//        viewModel.mQuotes.observe(viewLifecycleOwner, Observer {
+//            viewModel.updateCurrentQuote()
+//            viewModel.startPondering()
+//        })
 //        viewModel.mPonderDone.observe(viewLifecycleOwner, Observer<Boolean> {
 //            if(it) {
 //                binding.nextButton.isEnabled = true

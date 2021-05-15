@@ -13,9 +13,7 @@ import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
 
 class GratitudeFragment : Fragment() {
-    private val viewModel by viewModels<GratitudeViewModel> {
-        GratitudeViewModelFactory((requireContext().applicationContext as NeverDownApplication).gratitudeRepository)
-    }
+    private val viewModel = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

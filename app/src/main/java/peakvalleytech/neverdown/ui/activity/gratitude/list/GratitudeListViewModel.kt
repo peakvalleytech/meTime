@@ -9,9 +9,10 @@ import peakvalleytech.neverdown.Event
 import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionFragment
+import javax.inject.Inject
 import kotlin.random.Random
 
-class GratitudeListViewModel(
+class GratitudeListViewModel @Inject constructor(
     private val gratitudeRepository : GratitudeRepository
 ) : ViewModel() {
 

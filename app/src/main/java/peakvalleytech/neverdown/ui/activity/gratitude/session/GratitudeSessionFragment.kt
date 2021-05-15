@@ -13,12 +13,12 @@ import peakvalleytech.neverdown.R
 import peakvalleytech.neverdown.databinding.FragmentGratitudeBinding
 import peakvalleytech.neverdown.databinding.FragmentGratitudeSessionBinding
 import peakvalleytech.neverdown.ui.activity.SessionFragment
+import javax.inject.Inject
 
 class GratitudeSessionFragment : Fragment() {
-    private val viewModel by viewModels<GratitudeSessionViewModel> {
-        GratitudeViewModelFactory((requireContext().applicationContext as NeverDownApplication).gratitudeRepository)
-    }
 
+    @Inject
+    lateinit var  viewModel: GratitudeSessionViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

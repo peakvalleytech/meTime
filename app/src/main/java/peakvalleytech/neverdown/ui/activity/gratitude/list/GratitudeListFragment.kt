@@ -28,11 +28,7 @@ import peakvalleytech.neverdown.ui.activity.gratitude.session.GratitudeSessionFr
 
 class GratitudeListFragment : Fragment() {
     private val TAG = "GratitudeListFragment"
-    private val viewModel by viewModels<GratitudeListViewModel> {
-        GratitudeListViewModelFactory(
-            (requireContext().applicationContext as NeverDownApplication).gratitudeRepository
-        )
-    }
+    private val viewModel = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,14 +46,14 @@ class GratitudeListFragment : Fragment() {
         val recyclerView: RecyclerView = binding.recycler
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        viewModel.listLiveData.observe(viewLifecycleOwner, Observer {
-
-            recyclerView.adapter = MyListAdapter(it as MutableList<GratitudeItem>, viewModel)
-            val itemTouchHelperCallback = MyItemTouchHelperCallback(recyclerView.adapter as MyListAdapter, ItemTouchHelper.DOWN, ItemTouchHelper.LEFT)
-            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-            itemTouchHelper.attachToRecyclerView(recyclerView)
-
-        })
+//        viewModel.listLiveData.observe(viewLifecycleOwner, Observer {
+//
+//            recyclerView.adapter = MyListAdapter(it as MutableList<GratitudeItem>, viewModel)
+//            val itemTouchHelperCallback = MyItemTouchHelperCallback(recyclerView.adapter as MyListAdapter, ItemTouchHelper.DOWN, ItemTouchHelper.LEFT)
+//            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+//            itemTouchHelper.attachToRecyclerView(recyclerView)
+//
+//        })
         return binding.root
     }
 

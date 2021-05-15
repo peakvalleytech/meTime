@@ -7,12 +7,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.lifecycle.HiltViewModel
 import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import java.util.*
+import javax.inject.Inject
 import kotlin.random.Random
-
-class GratitudeSessionViewModel(
+@HiltViewModel
+class GratitudeSessionViewModel @Inject constructor(
     private val gratitudeRepository : GratitudeRepository
 ) : ViewModel() {
     /**
@@ -98,10 +100,10 @@ class GratitudeSessionViewModel(
     }
 }
 
-@Suppress("UNCHECKED_CAST")
-class GratitudeViewModelFactory (
-    private val gratitudeRepository: GratitudeRepository
-): ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel> create(modelClass: Class<T>) =
-        (GratitudeSessionViewModel(gratitudeRepository) as T)
-}
+//@Suppress("UNCHECKED_CAST")
+//class GratitudeViewModelFactory (
+//    private val gratitudeRepository: GratitudeRepository
+//): ViewModelProvider.NewInstanceFactory() {
+//    override fun <T : ViewModel> create(modelClass: Class<T>) =
+//        (GratitudeSessionViewModel(gratitudeRepository) as T)
+//}
