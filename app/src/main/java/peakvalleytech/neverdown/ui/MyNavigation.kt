@@ -30,12 +30,12 @@ fun MyNavigation(context: Context, viewModel: GratitudeSessionViewModel) {
             ActivitiesListScreen(navController = navController)
         }
         composable("gratitude_screen") {
-//           val gratitudeViewModel: GratitudeViewModel = GratitudeViewModel(gratitudeRepository = (context as NeverDownApplication).gratitudeRepository)
-            GratitudeScreen(navController = navController, null)
+            GratitudeScreen(navController = navController)
         }
         composable("gratitude_session_screen") {
-
-            GratitudeSessionScreen(viewmodel = GratitudeSessionViewModel(gratitudeRepository = (context as NeverDownApplication).gratitudeRepository))
+            val gratitudeSessionViewModel =
+                GratitudeSessionViewModel(gratitudeRepository = (context as NeverDownApplication).gratitudeRepository)
+            GratitudeSessionScreen(viewmodel = gratitudeSessionViewModel)
         }
         composable("meditation_screen") { 
             MeditationScreen(navController = navController)

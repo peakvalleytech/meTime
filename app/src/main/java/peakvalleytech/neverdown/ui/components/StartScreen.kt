@@ -18,7 +18,7 @@ import peakvalleytech.neverdown.ui.theme.colorPrimaryDark
  * @param menu a composable that displays a menu of actions specific to calling composeable
  */
 @Composable
-fun StartScreen(onStartActivity: () -> Unit, title: String, description: String, menu: ()-> Unit) {
+fun StartScreen(onStartActivity: () -> Unit, title: String, description: String, menu: @Composable ()-> Unit) {
     Column(modifier = Modifier
         .padding(Dp(16f))
         .background(colorPrimary)
@@ -34,11 +34,14 @@ fun StartScreen(onStartActivity: () -> Unit, title: String, description: String,
                     .fillMaxWidth()
                     .padding(bottom = Dp(16f)), color = colorPrimaryDark, fontSize = 24.sp)
         }
-
         Row(modifier = Modifier
             .fillMaxHeight(1f),
             verticalAlignment = Alignment.Bottom) {
-            button(text = "Start Activity", onClick = { onStartActivity() }, modifier = Modifier.fillMaxWidth())
+            Column(modifier = Modifier.fillMaxWidth()) {
+                menu()
+                button(text = "Start Activity", onClick = { onStartActivity() }, modifier = Modifier.fillMaxWidth())
+            }
+
         }
 
     }

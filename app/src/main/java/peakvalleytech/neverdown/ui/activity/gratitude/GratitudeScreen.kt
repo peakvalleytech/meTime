@@ -28,14 +28,15 @@ import peakvalleytech.neverdown.ui.components.button
 import peakvalleytech.neverdown.ui.theme.colorAccent
 
 @Composable
-fun GratitudeScreen(navController: NavHostController?, viewModel: GratitudeViewModel?) {
+fun GratitudeScreen(navController: NavHostController?) {
     Column(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()) {
-        button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier)
         StartScreen(onStartActivity = { navController?.navigate("gratitude_session_screen") },
             title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
-            menu = { /*TODO*/ })
+            menu = {
+                button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier)
+            })
     }
 }
 
@@ -44,5 +45,7 @@ fun GratitudeScreen(navController: NavHostController?, viewModel: GratitudeViewM
 fun GratitudeScreenPreview() {
     StartScreen(onStartActivity = { },
         title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
-        menu = { /*TODO*/ })
+        menu = {
+            button(text = "Manage List", onClick = {}, modifier = Modifier.fillMaxWidth())
+        })
 }
