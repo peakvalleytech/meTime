@@ -64,13 +64,9 @@ fun content(itemName: String, onNextListener: () -> Unit) {
             .fillMaxHeight()
             .border(width = Dp(1f), color = Color.Yellow)) {
             button("Yes", onNextListener, modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .background(
-                    colorAccent
-                ))
+                .fillMaxWidth(0.5f))
             button("No", onNextListener, modifier = Modifier
-                .fillMaxWidth(1f)
-                .background(colorAccent))
+                .fillMaxWidth(1f))
         }
     }
 }

@@ -10,12 +10,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import peakvalleytech.neverdown.ui.theme.colorPrimary
+import peakvalleytech.neverdown.ui.theme.colorPrimaryDark
 
 @Composable
 fun card(title: String, button: @Composable () -> Unit) {
     androidx.compose.material.Card(
         modifier = Modifier.padding(16.dp), shape = RoundedCornerShape(8.dp),
-        backgroundColor = MaterialTheme.colors.surface
+        backgroundColor = colorPrimary
     ) {
 //        Text(text)
         Column(
