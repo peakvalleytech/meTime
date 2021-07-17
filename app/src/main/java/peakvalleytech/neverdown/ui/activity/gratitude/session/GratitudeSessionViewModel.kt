@@ -20,7 +20,7 @@ class GratitudeSessionViewModel @Inject constructor(
     /**
      * The gratitude items that the app selects from
      */
-    private var _mItems = gratitudeRepository.getItems()
+    private var _mItems = MutableLiveData<List<GratitudeItem>>()
     val mItems: LiveData<List<GratitudeItem>> = _mItems
 //    var items: List<GratitudeItem> by mutableStateOf(gratitudeRepository.getItems())
 //        private set

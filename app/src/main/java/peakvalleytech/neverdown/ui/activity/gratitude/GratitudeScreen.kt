@@ -1,41 +1,27 @@
 package peakvalleytech.neverdown.ui.activity.gratitude
 
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.TextView
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
-import peakvalleytech.neverdown.ui.theme.colorPrimary
-import peakvalleytech.neverdown.ui.theme.colorPrimaryDark
 import androidx.navigation.compose.navigate
-import peakvalleytech.neverdown.ui.activity.gratitude.session.content
-import peakvalleytech.neverdown.ui.activity.gratitude.session.randomInt
-import peakvalleytech.neverdown.ui.components.StartScreen
+import peakvalleytech.neverdown.ui.components.ActivityMenu
 import peakvalleytech.neverdown.ui.components.button
-import peakvalleytech.neverdown.ui.theme.colorAccent
+import peakvalleytech.neverdown.ui.theme.colorPrimary
 
 @Composable
 fun GratitudeScreen(navController: NavHostController?) {
     Column(modifier = Modifier
         .fillMaxWidth()
-        .fillMaxHeight()) {
-        StartScreen(onStartActivity = { navController?.navigate("gratitude_session_screen") },
+        .fillMaxHeight()
+        .background(colorPrimary)) {
+        ActivityMenu(
             title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
             menu = {
-                button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier)
+                button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier.fillMaxWidth())
+                button(text = "Start Activity", onClick = { navController?.navigate("gratitude_session_screen") }, modifier = Modifier.fillMaxWidth())
             })
     }
 }
@@ -43,7 +29,7 @@ fun GratitudeScreen(navController: NavHostController?) {
 @Preview
 @Composable
 fun GratitudeScreenPreview() {
-    StartScreen(onStartActivity = { },
+    ActivityMenu(
         title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
         menu = {
             button(text = "Manage List", onClick = {}, modifier = Modifier.fillMaxWidth())

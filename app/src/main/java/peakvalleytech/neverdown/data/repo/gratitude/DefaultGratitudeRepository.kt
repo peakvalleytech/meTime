@@ -13,26 +13,17 @@ class DefaultGratitudeRepository(
     private val gratitudeDataSource: GratitudeDataSource,
     private val context: Context
 ) : GratitudeRepository {
-    override  fun getItems(): LiveData<List<GratitudeItem>> {
-        val data = MutableLiveData<List<GratitudeItem>>()
+    override suspend fun getItems(): List<GratitudeItem>? {
         var items: List<GratitudeItem>? = null
-        runBlocking {
-           items = gratitudeDataSource.getAllItems()
-            if (items?.size == 0) {
-                runBlocking {
-                    loadData()
-                }
-                joinAll()
-                    items = gratitudeDataSource.getAllItems();
-
-                     println("items: ${items}")
-                println("after mld")
+        items = gratitudeDataSource.getAllItems()
+        if (items?.size == 0) {
+            runBlocking {
+                loadData()
             }
-            print("end of rb")
-        print("Setting mld")
-        data.value = items
+            joinAll()
+            items = gratitudeDataSource.getAllItems();
         }
-        return data
+        return items
     }
 
     override suspend fun addItem(item: GratitudeItem) {
@@ -49,14 +40,14 @@ class DefaultGratitudeRepository(
             val items: MutableList<GratitudeItem> = mutableListOf()
             var id = 1
             val inputStream = context.resources.assets.open("gratitudeList.txt")
-            val scanner : Scanner = Scanner(inputStream)
-            while(scanner.hasNextLine()) {
+            val scanner: Scanner = Scanner(inputStream)
+            while (scanner.hasNextLine()) {
                 val item = scanner.nextLine()
                 items.add(GratitudeItem(id++, item))
             }
             gratitudeDataSource.insertItems(items)
             println("End loadData")
-        } catch(e: IOException) {
+        } catch (e: IOException) {
             e.printStackTrace()
         }
 

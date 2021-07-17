@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.Color
 //<color name="colorAccent">#03DAC5</color>
 //</resources>
 val colorPrimary = Color(0xFF_A7E2A7)
-val colorPrimaryDark = Color(0xFF_F5F6E0)
-val colorAccent = Color(0xFF_009688)
+val colorPrimaryDark =Color(0xFF_009688)
+val colorAccent = Color(0xFF_F5F6E0)
 
 @Composable
 fun buttonColors() = ButtonDefaults.buttonColors(contentColor = colorPrimaryDark,

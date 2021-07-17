@@ -14,7 +14,7 @@ class PicturesViewModel(
     /**
      * The gratitude items that the app selects from
      */
-    private var _mItems = gratitudeRepository.getItems()
+    private var _mItems = MutableLiveData<List<GratitudeItem>>()
     val mItems: LiveData<List<GratitudeItem>> = _mItems
 
     /**

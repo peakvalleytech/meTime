@@ -8,7 +8,7 @@ import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 class FakeGratitudeRepository :
     GratitudeRepository {
     private var itemsServiceData: MutableList<GratitudeItem> = mutableListOf()
-    override fun getItems(): LiveData<List<GratitudeItem>> {
+    override suspend fun getItems(): LiveData<List<GratitudeItem>> {
         return MutableLiveData(itemsServiceData)
     }
 

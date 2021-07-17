@@ -13,7 +13,7 @@ interface GratitudeRepository {
      * Get all items in repository
      * @return the list of all items
      */
-    fun getItems(): LiveData<List<GratitudeItem>>
+    suspend fun getItems(): List<GratitudeItem>?
 
     suspend fun addItem(item: GratitudeItem)
 

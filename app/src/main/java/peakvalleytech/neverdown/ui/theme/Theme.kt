@@ -8,10 +8,10 @@ import androidx.compose.ui.graphics.Color
 fun AppTheme(
     content: @Composable() () -> Unit
 ) {
-    val colors = darkColors(
-        primary = Color.Magenta,
-        primaryVariant = Color.Green,
-        secondary = Color.Yellow
+    val colors = lightColors(
+        primary = colorPrimary,
+        primaryVariant = colorPrimaryDark,
+        secondary = colorAccent
     )
     
     MaterialTheme(

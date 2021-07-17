@@ -5,7 +5,6 @@ import dagger.hilt.android.HiltAndroidApp
 import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.data.repo.QuotesRepository
 
-@HiltAndroidApp
 class NeverDownApplication : Application() {
     val gratitudeRepository : GratitudeRepository
         get() = ServiceLocator.provideGratitudeRepository(this)

@@ -23,11 +23,14 @@ import peakvalleytech.neverdown.ui.theme.colorPrimary
 @Composable
 fun ActivitiesListScreen(navController: NavHostController) {
     val startButtonLabel = "Start"
-    Column(modifier = Modifier.fillMaxWidth().fillMaxHeight().background(colorPrimary)) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight()
+        .background(colorPrimary)) {
         card("Gratitude",
             {button(startButtonLabel, modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = Dp(10f)), onClick = {
+                .fillMaxWidth()
+                .padding(all = Dp(10f)), onClick = {
                 navController.navigate("gratitude_screen")
             })}
         )
@@ -44,6 +47,11 @@ fun ActivitiesListScreen(navController: NavHostController) {
 //            .fillMaxWidth()
 //            .padding(all = Dp(10f)))
     }
+}
+
+@Composable
+fun ActivityListItem() {
+//    card
 }
 
 @Preview

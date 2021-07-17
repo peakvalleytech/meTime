@@ -8,7 +8,7 @@ import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 class FakeAndroidTestGratitudeRepository :
     GratitudeRepository {
     private var itemsServiceData: MutableList<GratitudeItem> = mutableListOf()
-    override fun getItems(): LiveData<List<GratitudeItem>> {
+    override suspend fun getItems(): LiveData<List<GratitudeItem>> {
         val itemNames = listOf("Place to sleep", "Food", "Water", "Clothes", "Computer")
         var id = 1
         for(itemName in itemNames) {

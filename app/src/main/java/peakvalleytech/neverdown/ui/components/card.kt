@@ -19,7 +19,6 @@ fun card(title: String, button: @Composable () -> Unit) {
         modifier = Modifier.padding(16.dp), shape = RoundedCornerShape(8.dp),
         backgroundColor = colorPrimary
     ) {
-//        Text(text)
         Column(
             modifier = Modifier
                 .height(200.dp)
