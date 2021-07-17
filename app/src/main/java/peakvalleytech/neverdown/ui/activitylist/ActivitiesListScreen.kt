@@ -29,8 +29,7 @@ fun ActivitiesListScreen(navController: NavHostController) {
         .background(colorPrimary)) {
         card("Gratitude",
             {button(startButtonLabel, modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = Dp(10f)), onClick = {
+                .fillMaxWidth(), onClick = {
                 navController.navigate("gratitude_screen")
             })}
         )
@@ -39,8 +38,7 @@ fun ActivitiesListScreen(navController: NavHostController) {
             {button(startButtonLabel, onClick = {
                 navController.navigate("meditation_screen")
                 }, modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = Dp(10f)))
+                .fillMaxWidth())
             })
 //
 //        button("Values", onClick = { /*TODO*/ }, modifier = Modifier

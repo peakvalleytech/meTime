@@ -22,7 +22,6 @@ import peakvalleytech.neverdown.ui.theme.colorPrimary
 class ActivitiesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             AppTheme {
                 Scaffold(topBar = { TopAppBar(title = {Text("NeverDown")})}, content = {

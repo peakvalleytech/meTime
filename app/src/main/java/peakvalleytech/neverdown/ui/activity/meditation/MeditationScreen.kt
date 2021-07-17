@@ -1,5 +1,6 @@
 package peakvalleytech.neverdown.ui.activity.meditation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,15 +10,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import peakvalleytech.neverdown.ui.components.ActivityMenu
+import peakvalleytech.neverdown.ui.components.button
+import peakvalleytech.neverdown.ui.theme.colorPrimary
 
 @Composable
 fun MeditationScreen(navController: NavHostController?) {
     Column(modifier = Modifier
         .fillMaxWidth()
-        .fillMaxHeight()) {
+        .fillMaxHeight()
+        .background(colorPrimary)) {
         ActivityMenu(
             title = "Meditation", description = "Meditation is a great way to give the mind some rest ",
-            menu = { /*TODO*/ })
+            menu = {
+                button(text = "Start Activity", onClick = { navController?.navigate("meditation_session_screen") }, modifier = Modifier.fillMaxWidth())
+            })
     }
 }
 

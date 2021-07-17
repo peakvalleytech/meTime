@@ -32,7 +32,8 @@ import peakvalleytech.neverdown.ui.theme.colorPrimaryDark
 @Composable
 fun GratitudeSessionScreen(viewmodel: GratitudeSessionViewModel) {
     val list: List<GratitudeItem> by viewmodel.mItems.observeAsState(listOf())
-    val (item, setItem) = remember {mutableStateOf(GratitudeItem())}
+    viewmodel.loadInitialItem()
+    val (item, setItem) = remember {mutableStateOf(GratitudeItem(name = "This app"))}
     Column(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
@@ -61,8 +62,7 @@ fun content(itemName: String, onNextListener: () -> Unit) {
         }
         Row(verticalAlignment = Alignment.Bottom,modifier = Modifier
             .fillMaxWidth(1.0f)
-            .fillMaxHeight()
-            .border(width = Dp(1f), color = Color.Yellow)) {
+            .fillMaxHeight()) {
             button("Yes", onNextListener, modifier = Modifier
                 .fillMaxWidth(0.5f))
             button("No", onNextListener, modifier = Modifier

@@ -3,11 +3,9 @@ package peakvalleytech.neverdown.ui.activity.gratitude.session
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import peakvalleytech.neverdown.data.repo.gratitude.GratitudeRepository
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import java.util.*
@@ -54,12 +52,11 @@ class GratitudeSessionViewModel @Inject constructor(
     private var seenItems : MutableList<GratitudeItem> = mutableListOf()
 
     fun loadInitialItem() {
-//        viewModelScope.launch {
-//            _mItems = gratitudeRepository.getItems()
-//            mItems = _mItems
+        viewModelScope.launch {
+            _mItems.postValue(gratitudeRepository.getItems())
 //            _mItem.value = mItems.get(0)
 //            println("items : " + mItems)
-//        }
+        }
     }
 
     /**

@@ -1,9 +1,6 @@
 package peakvalleytech.neverdown.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -29,6 +26,7 @@ fun card(title: String, button: @Composable () -> Unit) {
                 text = title,
                 style = MaterialTheme.typography.h4
             )
+            Spacer(modifier = Modifier.height(16.dp))
             button()
         }
     }
