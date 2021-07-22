@@ -37,8 +37,8 @@ fun ActivityMenu(title: String, description: String, menu: @Composable ()-> Unit
                     .padding(bottom = Dp(16f)), color = colorPrimaryDark, fontSize = 24.sp)
         }
         Row(modifier = Modifier
-            .fillMaxHeight(0.2f),
-            verticalAlignment = Alignment.Top) {
+            .fillMaxHeight(),
+            verticalAlignment = Alignment.Bottom) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 menu()
             }
