@@ -1,5 +1,7 @@
 package peakvalleytech.neverdown.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Window
 import androidx.activity.ComponentActivity
@@ -33,6 +35,7 @@ import peakvalleytech.neverdown.ui.theme.colorPrimary
 class ActivitiesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             SystemUi(windows = window) {
                 val dialogState = remember {
@@ -42,12 +45,12 @@ class ActivitiesActivity : ComponentActivity() {
                   dialogState.value = it
                 }
                 }, content = {
-//                    Surface(modifier = Modifier.background(colorPrimary)) {
+                    Surface(modifier = Modifier.background(colorPrimary)) {
                     if (dialogState.value) {
-                        HelpDialog(dialogState)
+                        HelpDialog(dialogState, this)
                     }
                         MyNavigation(context = applicationContext)
-//                    }
+                    }
                 })
             }
         }
@@ -76,9 +79,9 @@ fun SystemUi(windows: Window, content: @Composable () -> Unit) =
 
 
 @Composable
-fun HelpDialog(helpDialogState: MutableState<Boolean>) {
+fun HelpDialog(helpDialogState: MutableState<Boolean>, activity: ComponentActivity) {
     if(helpDialogState.value)
-        AlertDialog(onDismissRequest = {
+        AlertDialog(modifier = Modifier.padding(start = 24.dp, end = 24.dp),onDismissRequest = {
             helpDialogState.value = false
         },
             title = {
@@ -91,9 +94,9 @@ fun HelpDialog(helpDialogState: MutableState<Boolean>) {
                 Column {
                     Text("Why use MeTime?", fontWeight = FontWeight.Bold)
                     Text("\nMeTime helps you take better breaks so you can be more productive.")
-                    Text("\nChoose from different activiites that is scientifcally proven to help you relax, destress, and calm your mind")
+                    Text("\nChoose from different activities that is scientifically proven to help you relax, destress, and calm your mind")
                     Text("\nSupport", fontWeight = FontWeight.Bold)
-                    Text("\nDepending on you (the users), new actvities may or may not be added.")
+                    Text("\nDepending on you (the users), new activities may or may not be added.")
                     Text("\nPlease help support his app, by sharing and leaving a review.")
                     Text("\nLike this app?", fontWeight = FontWeight.Bold)
                     Text("\nPlease download my other apps, below:")
@@ -101,7 +104,11 @@ fun HelpDialog(helpDialogState: MutableState<Boolean>) {
             },
             confirmButton = {
                 Button({
-                    helpDialogState.value = false
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.setData(
+                        Uri.parse("https://play.google.com/store/apps/developer?id=peakvalleytech")
+                    )
+                    activity.startActivity(intent)
                 }) {
                     Text("Other Apps")
                 }

@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.navigate
 import peakvalleytech.neverdown.ui.components.button
 import peakvalleytech.neverdown.ui.components.card
 import peakvalleytech.neverdown.ui.theme.colorPrimary

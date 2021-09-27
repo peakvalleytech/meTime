@@ -74,7 +74,7 @@ fun Content(list: List<GratitudeItem>,
 
         LazyColumn(modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(.80f)
+            .fillMaxHeight(.9f)
             .padding()) {
                     items(
                         list.size,
@@ -101,7 +101,7 @@ fun Content(list: List<GratitudeItem>,
 
         }
         if (openDialog.value) {
-            AlertDialog(onDismissRequest= {
+            AlertDialog(modifier = Modifier.padding(start = 24.dp, end = 24.dp),onDismissRequest= {
                 openDialog.value = false
             },
             title = {Text("Add gratitude item")},
@@ -143,9 +143,8 @@ fun Content(list: List<GratitudeItem>,
                 )
         }
 
-        Row(modifier = Modifier
-            .padding(8.dp)
-            .height(400.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = Modifier.fillMaxHeight(),verticalAlignment = Alignment.CenterVertically) {
+            Spacer(modifier = Modifier.fillMaxWidth(.8f))
             Button(modifier = Modifier
                 .wrapContentHeight()
                 .wrapContentWidth(),

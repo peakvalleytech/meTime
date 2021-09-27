@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.navigate
 import peakvalleytech.neverdown.ui.components.ActivityMenu
 import peakvalleytech.neverdown.ui.components.button
 import peakvalleytech.neverdown.ui.theme.colorPrimary
@@ -21,9 +20,9 @@ fun MeditationScreen(navController: NavHostController?) {
         .background(colorPrimary)) {
         ActivityMenu(
             title = "Meditation", description = "Meditation is a great way to give the mind some rest ",
-            menu = {
+            menu = listOf({
                 button(text = "Start Activity", onClick = { navController?.navigate("meditation_session_screen") }, modifier = Modifier.fillMaxWidth())
-            })
+            }))
     }
 }
 
@@ -33,5 +32,5 @@ fun MeditationScreenPreview() {
     ActivityMenu(
         title = "Meditation", description = "Meditation is a great way to give the mind some rest " +
                 "and increase focus",
-        menu = { /*TODO*/ })
+        menu = listOf({ /*TODO*/ }))
 }

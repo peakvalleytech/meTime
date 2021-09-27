@@ -96,9 +96,9 @@ fun cardPreview() {
         }
     }
 }
-@ExperimentalAnimationApi
-@Preview
+//@ExperimentalAnimationApi
 @Composable
+@Preview
 fun MeditationSessionScreenPreview() {
     Content("", 0, {})
 }

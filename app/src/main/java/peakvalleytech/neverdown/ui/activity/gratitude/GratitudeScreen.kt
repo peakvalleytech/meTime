@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.navigate
 import peakvalleytech.neverdown.ui.components.ActivityMenu
 import peakvalleytech.neverdown.ui.components.button
 import peakvalleytech.neverdown.ui.theme.colorPrimary
@@ -19,10 +18,12 @@ fun GratitudeScreen(navController: NavHostController?) {
         .background(colorPrimary)) {
         ActivityMenu(
             title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
-            menu = {
-                button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier.fillMaxWidth())
-                button(text = "Start Activity", onClick = { navController?.navigate("gratitude_session_screen") }, modifier = Modifier.fillMaxWidth())
-            })
+            menu =
+            listOf(
+                {button(text = "Manage List", onClick = {navController?.navigate("gratitude_list_screen")}, modifier = Modifier.fillMaxWidth())},
+                {button(text = "Start Activity", onClick = { navController?.navigate("gratitude_session_screen") }, modifier = Modifier.fillMaxWidth())}
+            ))
+
     }
 }
 
@@ -31,7 +32,7 @@ fun GratitudeScreen(navController: NavHostController?) {
 fun GratitudeScreenPreview() {
     ActivityMenu(
         title = "Gratitude", description = "Take some time to be grateful for the many blessings in your life. You'll feel better",
-        menu = {
+        menu = listOf({
             button(text = "Manage List", onClick = {}, modifier = Modifier.fillMaxWidth())
-        })
+        }))
 }
