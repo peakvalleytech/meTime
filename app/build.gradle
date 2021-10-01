@@ -117,7 +117,7 @@ dependencies {
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
-
+    implementation "com.google.accompanist:accompanist-navigation-material:0.18.0-SNAPSHOT"
     implementation "androidx.fragment:fragment-testing:$fragmentVersion"
 
     // Debug db

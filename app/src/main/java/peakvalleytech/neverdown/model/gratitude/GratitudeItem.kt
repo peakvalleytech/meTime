@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "gratitude")
 data class GratitudeItem(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo
-    var id: Int? = 0,
+    var id: Int = 0,
     @ColumnInfo(name ="name")
     var name: String? = null
 )

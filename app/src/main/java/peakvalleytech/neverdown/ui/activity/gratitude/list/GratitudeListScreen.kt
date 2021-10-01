@@ -132,8 +132,6 @@ fun Content(list: List<GratitudeItem>,
 //                            }
                         )
                     }
-
-
                 },
                 confirmButton = {Button({
                     openDialog.value = false

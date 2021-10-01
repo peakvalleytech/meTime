@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.model.quotes.Quote
 
-@Database(entities = [GratitudeItem::class, Quote::class], version = 4, exportSchema = true)
+@Database(entities = [GratitudeItem::class, Quote::class], version = 5, exportSchema = true)
 abstract class NeverDownDatabase : RoomDatabase()
 {
     abstract fun gratitudeItemDao(): GratitudeDao
