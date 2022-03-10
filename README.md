@@ -1,4 +1,4 @@
-# meTime
+# meTime - Jetpack Compose Example
 
 100% Kotlin
 Jetpack Compose
