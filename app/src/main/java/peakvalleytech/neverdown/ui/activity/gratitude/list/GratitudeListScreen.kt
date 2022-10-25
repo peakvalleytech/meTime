@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.*
@@ -25,6 +26,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import peakvalleytech.neverdown.model.gratitude.GratitudeItem
 import peakvalleytech.neverdown.ui.activity.meditation.session.text
 import peakvalleytech.neverdown.ui.theme.buttonColors
@@ -66,6 +69,9 @@ fun Content(list: List<GratitudeItem>,
     val openDialog = remember {
         mutableStateOf(false)
     }
+
+    var scrollState = rememberLazyListState()
+
     Column(modifier =
     Modifier
         .fillMaxWidth()
@@ -75,7 +81,9 @@ fun Content(list: List<GratitudeItem>,
         LazyColumn(modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(.9f)
-            .padding()) {
+            .padding(),
+            state = scrollState
+        ) {
                     items(
                         list.size,
                         null
@@ -135,7 +143,11 @@ fun Content(list: List<GratitudeItem>,
                 },
                 confirmButton = {Button({
                     openDialog.value = false
+                    GlobalScope.launch {
                     onAddItem(GratitudeItem(name = textFieldState.value.text))
+                        scrollState.scrollToItem(list.size)
+                    }
+
                 }) {Text("Confirm")} },
                 dismissButton = {Button({openDialog.value = false}) {Text("Dismiss")} }
                 )
